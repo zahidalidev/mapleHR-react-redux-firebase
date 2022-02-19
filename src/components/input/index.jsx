@@ -1,27 +1,29 @@
-import PropsTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
-import { Typography } from 'components/input/styles'
-import { InputWrapper, InputField } from 'sharedStyle'
+import 'components/input/styles.css'
 
-const Input = ({ item, handleChange, index }) => {
+const Input = ({ item, formik }) => {
+  const error = formik.errors[item]
+
   return (
-    <InputWrapper>
-      <InputField
-        invalid={item.error}
-        type={item.type}
-        placeholder={item.placeHolder}
-        value={item.value}
-        onChange={e => handleChange(index, e.target.value)}
+    <div className='input-wrapper'>
+      <input
+        name={item}
+        onChange={formik.handleChange}
+        value={formik.values[item]}
+        type={item}
+        placeholder={item}
+        autoComplete={item}
+        className={`input-field ${error && 'field-error'}`}
       />
-      {item.error ? <Typography>Please enter a valid </Typography> : null}
-    </InputWrapper>
+      {error && <div className='validation-error'>{error}!</div>}
+    </div>
   )
 }
 
 Input.propTypes = {
-  item: PropsTypes.object.isRequired,
-  handleChange: PropsTypes.func.isRequired,
-  index: PropsTypes.number.isRequired
+  item: PropTypes.string.isRequired,
+  formik: PropTypes.object.isRequired
 }
 
 export default Input

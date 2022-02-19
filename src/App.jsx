@@ -1,5 +1,7 @@
+import Routes from 'components/Routes'
+
 const App = () => {
-  return <div></div>
+  return <Routes />
 }
 
 export default App
