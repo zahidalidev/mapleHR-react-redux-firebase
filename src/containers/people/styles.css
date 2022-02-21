@@ -1,0 +1,105 @@
+.people-container {
+  display: flex;
+  justify-content: space-around;
+  background-color: #fcfbfa;
+  margin: 0px;
+}
+.people-wrapper {
+  line-height: 1.5em;
+  margin-top: 3rem;
+  width: 90%;
+  overflow: inherit !important;
+  border-radius: 10px;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  background-color: #ffffff;
+}
+
+.card-header {
+  margin: -20px 15px 0;
+  display: flex;
+  padding: 16px;
+  align-items: center;
+  margin-left: 0px;
+  padding-top: 20px;
+  margin-right: 0px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.card-title {
+  color: #000 !important;
+  font-size: 2rem !important;
+  font-weight: 400 !important;
+  line-height: 1.5em !important;
+  margin-bottom: 5px !important;
+  margin-top: 1.7rem !important;
+  margin: 0.3rem;
+  display: block;
+}
+
+.card-root {
+  padding: 16px;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 24px;
+}
+
+.card-bar {
+  border-bottom: 2px solid #d3d8e6;
+}
+
+.card-scrollable {
+  position: absolute;
+  top: -9999px;
+  overflow: scroll;
+}
+
+.card-scroller {
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+}
+
+.user-btn {
+  border: 0;
+  cursor: pointer;
+  padding: 6px 12px;
+  min-height: 48px;
+  min-width: 160px;
+  display: flex;
+  width: 280px;
+  justify-content: space-evenly;
+  color: #858484 !important;
+  font-size: 1.2rem !important;
+  font-weight: 400 !important;
+  text-transform: uppercase;
+}
+
+.user-btn:hover {
+  background-color: transparent !important;
+}
+
+.user-bottom {
+  bottom: 0;
+  position: absolute;
+  height: 4px;
+  background-color: #27bab1;
+  left: 0px;
+  width: 280px;
+}
+
+.search-bar {
+  margin-top: 1.5rem;
+}
+
+.search-input {
+  border: none;
+  box-shadow: none;
+  padding-left: 5px;
+  outline: 0;
+}
+
+.mui-switch {
+  margin-left: 0.1rem !important;
+}
