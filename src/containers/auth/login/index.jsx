@@ -1,21 +1,24 @@
-import { useFormik } from 'formik'
-
-import Form from 'components/form'
-import validate from 'utils/validate'
+import AuthForm from 'components/authform'
 
 const Login = () => {
-  const formik = useFormik({
-    initialValues: {
-      email: '',
-      password: ''
-    },
-    validate,
-    onSubmit: values => {
-      console.log(values)
-    }
-  })
+  const initialValues = {
+    email: '',
+    password: ''
+  }
 
-  return <Form formik={formik} btnName='Sign In' pathName='/signup' authText='Create account!' />
+  const submit = values => {
+    console.log(values)
+  }
+
+  return (
+    <AuthForm
+      initialValues={initialValues}
+      submit={submit}
+      btnName='Sign In'
+      pathName='/signup'
+      authText='Create account!'
+    />
+  )
 }
 
 export default Login

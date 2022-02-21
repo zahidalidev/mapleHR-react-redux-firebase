@@ -13,5 +13,10 @@ export default values => {
     errors.password = 'Must be 5 characters or more'
   }
 
+  if (values.password != values.confirmPassword) {
+    errors.confirmPassword = 'Required'
+    errors.confirmPassword = 'Password and Confirm Password not same!'
+  }
+
   return errors
 }
