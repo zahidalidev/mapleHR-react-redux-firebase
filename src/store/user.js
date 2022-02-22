@@ -1,30 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
-
-import { firebaseAuth } from 'config/firebase'
-import { login } from 'services/userServices'
 
 const slice = createSlice({
   name: 'user',
-  initialState: {},
+  initialState: { token: '' },
   reducers: {
-    USER_LOGIN: async (userState, action) => {
-      try {
-        const { user } = await createUserWithEmailAndPassword(
-          firebaseAuth,
-          action.payload.email,
-          action.payload.password
-        )
-
-        await login(user.uid, user.email)
-
-        return { email: action.payload.email }
-      } catch (error) {
-        console.log('errro singup: ', error)
-      }
+    USER_SIGNUP: (user, action) => {
+      user.token = action.payload.token
+      localStorage.setItem('token', user)
+    },
+    USER_LOGIN: (user, action) => {
+      user.token = action.payload.token
+      localStorage.setItem('token', user)
     }
   }
 })
 
-export const { USER_LOGIN } = slice.actions
+export const { USER_SIGNUP, USER_LOGIN } = slice.actions
 export default slice.reducer

@@ -11,7 +11,7 @@ const Input = ({ item, formik }) => {
         name={item}
         onChange={formik.handleChange}
         value={formik.values[item]}
-        type={item}
+        type={item === 'password' ? 'confirm password' : item}
         placeholder={item === 'confirmPassword' ? 'confirm password' : item}
         autoComplete={item}
         className={`input-field ${error && 'field-error'}`}
