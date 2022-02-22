@@ -49,6 +49,12 @@
   border-bottom: 2px solid #d3d8e6;
 }
 
+.card-bar-body {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #949494;
+}
+
 .card-scrollable {
   position: absolute;
   top: -9999px;

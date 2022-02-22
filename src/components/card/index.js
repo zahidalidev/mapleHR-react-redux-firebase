@@ -7,14 +7,12 @@ import CallIcon from '@mui/icons-material/Call'
 
 import 'components/card/styles.css'
 
-const MuiCard = () => {
+const UserCard = () => {
   return (
     <Card className='card'>
       <CardMedia
         className='media-card'
         component='img'
-        height='100'
-        width='100'
         image='https://www.interlinecenter.com/wp-content/uploads/2016/10/dummy-user-img.png'
         alt='User Image'
       />
@@ -38,4 +36,4 @@ const MuiCard = () => {
   )
 }
 
-export default MuiCard
+export default UserCard

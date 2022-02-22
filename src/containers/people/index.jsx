@@ -2,10 +2,10 @@ import Button from '@mui/material/Button'
 import { styled } from '@mui/material/styles'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Switch from '@mui/material/Switch'
+import Card from 'components/card'
+// import Table from 'components/table'
 
 import 'containers/people/styles.css'
-// import Table from 'components/table'
-import Card from 'components/card'
 
 const MaterialUISwitch = styled(Switch)(() => ({
   width: 62,
@@ -103,6 +103,8 @@ const People = () => {
               />
             </div>
           </div>
+          <header className='card-bar-body' />
+
           {/* <Table /> */}
           <Card />
         </div>
