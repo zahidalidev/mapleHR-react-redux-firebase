@@ -4,7 +4,8 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import Switch from '@mui/material/Switch'
 
 import 'containers/people/styles.css'
-import Table from 'components/table'
+// import Table from 'components/table'
+import Card from 'components/card'
 
 const MaterialUISwitch = styled(Switch)(() => ({
   width: 62,
@@ -102,7 +103,8 @@ const People = () => {
               />
             </div>
           </div>
-          <Table />
+          {/* <Table /> */}
+          <Card />
         </div>
       </div>
     </div>
