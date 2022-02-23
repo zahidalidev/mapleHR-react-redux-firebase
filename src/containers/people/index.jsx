@@ -6,6 +6,8 @@ import Card from 'components/card'
 // import Table from 'components/table'
 
 import 'containers/people/styles.css'
+import { useEffect } from 'react'
+import { getUsers } from 'services/userServices'
 
 const MaterialUISwitch = styled(Switch)(() => ({
   width: 62,
@@ -53,6 +55,18 @@ const MaterialUISwitch = styled(Switch)(() => ({
 }))
 
 const People = () => {
+  const getAllUsers = async () => {
+    try {
+      const res = await getUsers()
+      console.log(res)
+    } catch (error) {
+      console.log('Getting users error: ', error)
+    }
+  }
+  useEffect(() => {
+    getAllUsers()
+  }, [])
+
   return (
     <div className='container-fluid people-container'>
       <div className='people-wrapper'>

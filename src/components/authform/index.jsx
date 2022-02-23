@@ -2,14 +2,13 @@ import PropTypes from 'prop-types'
 
 import Input from 'components/input'
 import 'components/authform/styles.css'
-import validate from 'utils/validate'
 
 import logo from 'assets/logo.png'
 import Button from 'components/button'
 import { Link } from 'react-router-dom'
 import { useFormik } from 'formik'
 
-const AuthForm = ({ initialValues, submit, authText, pathName, btnName }) => {
+const AuthForm = ({ initialValues, submit, authText, pathName, btnName, validate }) => {
   const formik = useFormik({
     initialValues,
     validate,
@@ -48,7 +47,8 @@ AuthForm.propTypes = {
   submit: PropTypes.func.isRequired,
   authText: PropTypes.string.isRequired,
   pathName: PropTypes.string.isRequired,
-  btnName: PropTypes.string.isRequired
+  btnName: PropTypes.string.isRequired,
+  validate: PropTypes.func.isRequired
 }
 
 export default AuthForm
