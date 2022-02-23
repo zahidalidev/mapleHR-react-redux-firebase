@@ -3,11 +3,14 @@ import { styled } from '@mui/material/styles'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Switch from '@mui/material/Switch'
 import Card from 'components/card'
-// import Table from 'components/table'
+import Table from 'components/table'
 
 import 'containers/people/styles.css'
 import { useEffect } from 'react'
 import { getUsers } from 'services/userServices'
+import { useDispatch } from 'react-redux'
+import { ADD_ALL_USERS } from 'store/allUsers'
+import { useState } from 'react'
 
 const MaterialUISwitch = styled(Switch)(() => ({
   width: 62,
@@ -55,10 +58,13 @@ const MaterialUISwitch = styled(Switch)(() => ({
 }))
 
 const People = () => {
+  const [isTable, setIsTable] = useState(true)
+  const dispatch = useDispatch()
+
   const getAllUsers = async () => {
     try {
       const res = await getUsers()
-      console.log(res)
+      dispatch(ADD_ALL_USERS({ users: res }))
     } catch (error) {
       console.log('Getting users error: ', error)
     }
@@ -66,6 +72,10 @@ const People = () => {
   useEffect(() => {
     getAllUsers()
   }, [])
+
+  const handleChange = () => {
+    setIsTable(!isTable)
+  }
 
   return (
     <div className='container-fluid people-container'>
@@ -114,13 +124,13 @@ const People = () => {
                 className='mui-switch'
                 control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
                 label=''
+                onChange={handleChange}
               />
             </div>
           </div>
           <header className='card-bar-body' />
 
-          {/* <Table /> */}
-          <Card />
+          {isTable ? <Table /> : <Card />}
         </div>
       </div>
     </div>

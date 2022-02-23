@@ -1,3 +1,13 @@
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.card-wrapper {
+  display: flex;
+  flex: 20%;
+  margin: 0.5rem;
+  margin-top: 2rem;
+}
 .card {
   display: flex;
   align-items: center;
