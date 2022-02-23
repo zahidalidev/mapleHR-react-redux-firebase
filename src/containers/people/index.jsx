@@ -129,7 +129,6 @@ const People = () => {
             </div>
           </div>
           <header className='card-bar-body' />
-
           {isTable ? <Table /> : <Card />}
         </div>
       </div>

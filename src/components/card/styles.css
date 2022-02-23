@@ -1,86 +1,86 @@
 .cards-container {
-  display: flex;
-  flex-wrap: wrap;
+  display: flex !important;
+  flex-wrap: wrap !important;
 }
 .card-wrapper {
-  display: flex;
-  flex: 20%;
-  margin: 0.5rem;
-  margin-top: 2rem;
+  display: flex !important;
+  flex: 20% !important;
+  margin: 0.5rem !important;
+  margin-top: 2rem !important;
 }
 .card {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 25.8rem;
-  height: 27rem;
-  border-radius: 20px;
-  cursor: pointer;
-  justify-content: space-between;
+  display: flex !important;
+  align-items: center !important;
+  flex-direction: column !important;
+  width: 25.8rem !important;
+  height: 27rem !important;
+  border-radius: 20px !important;
+  cursor: pointer !important;
+  justify-content: space-between !important;
 }
 
 .card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2) !important;
 }
 
 .media-card {
-  object-fit: contain;
-  height: 136px;
+  object-fit: contain !important;
+  height: 136px !important;
   margin-top: 30px !important;
 }
 
-.card-title {
-  color: #000000;
+.c-card-title {
+  color: #000000 !important;
   margin-top: 0.5rem !important;
 }
 
 .card-content {
   font-size: 1.2rem !important;
-  display: flex;
-  justify-content: space-around;
-  color: grey;
+  display: flex !important;
+  justify-content: space-around !important;
+  color: grey !important;
 }
 
 .card-id {
-  margin-top: 1.3rem;
+  margin-top: 1.3rem !important;
 }
 
 .icon-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 .card-email {
-  margin-top: 0.5rem;
-  border-bottom: 1.8px solid #c9c9c9;
-  margin-bottom: 10px;
-  margin-left: 10px;
+  margin-top: 0.5rem !important;
+  border-bottom: 1.8px solid #c9c9c9 !important;
+  margin-bottom: 10px !important;
+  margin-left: 10px !important;
 }
 
 .card-contact {
-  margin-left: 10px;
+  margin-left: 10px !important;
 }
 
 .user-designation {
-  font-weight: 300;
-  line-height: 1.5em;
-  align-items: center;
-  background-color: #f1f6fd;
-  color: #333;
-  display: flex;
-  justify-content: center;
-  min-height: 70px;
-  padding: 0 10px;
-  text-transform: uppercase;
+  font-weight: 300 !important;
+  line-height: 1.5em !important;
+  align-items: center !important;
+  background-color: #f1f6fd !important;
+  color: #333 !important;
+  display: flex !important;
+  justify-content: center !important;
+  min-height: 70px !important;
+  padding: 0 10px !important;
+  text-transform: uppercase !important;
   width: 25.8rem !important;
-  margin-top: 15px;
+  margin-top: 15px !important;
 }
 
 .user-designationText {
-  color: #333;
-  text-transform: uppercase;
-  font-size: 1rem;
-  font-weight: 700;
-  text-align: center;
+  color: #333 !important;
+  text-transform: uppercase !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  text-align: center !important;
 }

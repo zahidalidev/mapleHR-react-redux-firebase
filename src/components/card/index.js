@@ -23,7 +23,7 @@ const UserCard = () => {
               alt='User Image'
             />
             <CardContent className='card-content-wrapper'>
-              <Typography className='card-content card-title'>Abdul Hannan</Typography>
+              <Typography className='card-content c-card-title'>Abdul Hannan</Typography>
               <Typography className='card-content card-id'>ID-272</Typography>
               <div className='icon-wrapper'>
                 <EmailIcon className='card-content' />
