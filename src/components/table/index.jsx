@@ -1,6 +1,5 @@
 import DataTable from 'react-data-table-component'
 import PropsTypes from 'prop-types'
-import { useSelector } from 'react-redux'
 
 const ExpandedComponent = ({ data }) => <pre>{JSON.stringify(data, null, 2)}</pre>
 
@@ -29,9 +28,7 @@ const columns = [
   }
 ]
 
-const Table = () => {
-  const allUsers = useSelector(state => state.allUsers)
-
+const Table = ({ allUsers }) => {
   return (
     <DataTable
       onRowClicked={row => console.log(row)}
@@ -46,6 +43,10 @@ const Table = () => {
 
 ExpandedComponent.propTypes = {
   data: PropsTypes.isRequired
+}
+
+Table.propTypes = {
+  allUsers: PropsTypes.array.isRequired
 }
 
 export default Table

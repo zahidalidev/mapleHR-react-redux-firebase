@@ -25,7 +25,7 @@ export const getUsers = async () => {
   const snapshot = await getDocs(collection(firebaseFirestore, 'users'))
   const allUsers = []
   snapshot.docs.map(doc => {
-    allUsers.push(doc.data())
+    allUsers.push({ ...doc.data(), id: doc.id })
   })
 
   return allUsers

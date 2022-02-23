@@ -4,38 +4,31 @@ import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import EmailIcon from '@mui/icons-material/Email'
 import CallIcon from '@mui/icons-material/Call'
-import { useSelector } from 'react-redux'
+import PropTypes from 'prop-types'
 
 import 'components/card/styles.css'
 
-const UserCard = () => {
-  const allUsers = useSelector(state => state.allUsers)
-
+const UserCard = ({ allUsers }) => {
   return (
     <div className='cards-container'>
       {allUsers.map(item => (
-        <div key={item.uid} className='card-wrapper'>
+        <div key={item.id} className='card-wrapper'>
           <Card className='card'>
-            <CardMedia
-              className='media-card'
-              component='img'
-              image='https://www.interlinecenter.com/wp-content/uploads/2016/10/dummy-user-img.png'
-              alt='User Image'
-            />
+            <CardMedia className='media-card' component='img' image={item.image} alt='User Image' />
             <CardContent className='card-content-wrapper'>
-              <Typography className='card-content c-card-title'>Abdul Hannan</Typography>
-              <Typography className='card-content card-id'>ID-272</Typography>
+              <Typography className='card-content c-card-title'>{item.name}</Typography>
+              <Typography className='card-content card-id'>ID-{item.id}</Typography>
               <div className='icon-wrapper'>
                 <EmailIcon className='card-content' />
-                <Typography className='card-content card-email'>zahid@gmaill.com</Typography>
+                <Typography className='card-content card-email'>{item.email}</Typography>
               </div>
               <div className='icon-wrapper'>
                 <CallIcon className='card-content' />
-                <Typography className='card-content card-contact'>03367088018</Typography>
+                <Typography className='card-content card-contact'>{item.contact}</Typography>
               </div>
 
               <div className='user-designation'>
-                <p className='user-designationText'>Associate Software Engineer</p>
+                <p className='user-designationText'>{item.title}</p>
               </div>
             </CardContent>
           </Card>
@@ -43,6 +36,10 @@ const UserCard = () => {
       ))}
     </div>
   )
+}
+
+UserCard.propTypes = {
+  allUsers: PropTypes.array.isRequired
 }
 
 export default UserCard

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Button from '@mui/material/Button'
 import { styled } from '@mui/material/styles'
 import FormControlLabel from '@mui/material/FormControlLabel'
@@ -5,12 +6,12 @@ import Switch from '@mui/material/Switch'
 import Card from 'components/card'
 import Table from 'components/table'
 
-import 'containers/people/styles.css'
 import { useEffect } from 'react'
 import { getUsers } from 'services/userServices'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { ADD_ALL_USERS } from 'store/allUsers'
-import { useState } from 'react'
+
+import 'containers/people/styles.css'
 
 const MaterialUISwitch = styled(Switch)(() => ({
   width: 62,
@@ -18,9 +19,9 @@ const MaterialUISwitch = styled(Switch)(() => ({
   padding: 4,
   '& .MuiSwitch-switchBase': {
     padding: 0,
-    transform: 'translateX(6px)',
+    transform: 'translateX(0px)',
     '&.Mui-checked': {
-      transform: 'translateX(22px)',
+      transform: 'translateX(25px)',
       '& .MuiSwitch-thumb:before': {
         backgroundImage:
           'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABSSURBVHgB7ZHBCQAgCEV/0CCN0mg1Sps0SiO4QV3FgyRFEPhAUPB7eAKOlWmozINRHGrYh/AVmpOiBaWjqux2vCCIObGecPAZ7qQbcqqjAecqCw7WHKzQS/12AAAAAElFTkSuQmCC)'
@@ -59,6 +60,8 @@ const MaterialUISwitch = styled(Switch)(() => ({
 
 const People = () => {
   const [isTable, setIsTable] = useState(true)
+  const [currentUsers, setCurrentUsers] = useState([])
+  const allUsers = useSelector(state => state.allUsers)
   const dispatch = useDispatch()
 
   const getAllUsers = async () => {
@@ -69,12 +72,34 @@ const People = () => {
       console.log('Getting users error: ', error)
     }
   }
+
   useEffect(() => {
     getAllUsers()
   }, [])
 
+  useEffect(() => {
+    setCurrentUsers(allUsers)
+    console.log('kkk')
+  }, [allUsers])
+
   const handleChange = () => {
     setIsTable(!isTable)
+  }
+
+  const hangleSearch = e => {
+    const value = e.target.value.toUpperCase()
+    const filteredUsers = allUsers.filter(item => {
+      const { name, title, email, contact } = item
+      if (
+        name.toUpperCase().indexOf(value) != -1 ||
+        title.toUpperCase().indexOf(value) != -1 ||
+        email.toUpperCase().indexOf(value) != -1 ||
+        contact.toUpperCase().indexOf(value) != -1
+      ) {
+        return item
+      }
+    })
+    setCurrentUsers(filteredUsers)
   }
 
   return (
@@ -117,6 +142,7 @@ const People = () => {
                   maxLength='30'
                   minLength='2'
                   placeholder='Search'
+                  onChange={hangleSearch}
                 />
               </span>
 
@@ -129,7 +155,7 @@ const People = () => {
             </div>
           </div>
           <header className='card-bar-body' />
-          {isTable ? <Table /> : <Card />}
+          {isTable ? <Table allUsers={currentUsers} /> : <Card allUsers={currentUsers} />}
         </div>
       </div>
     </div>
