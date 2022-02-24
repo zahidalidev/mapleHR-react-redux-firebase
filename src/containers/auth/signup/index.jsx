@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import { USER_SIGNUP } from 'store/user'
+import { validateUser } from 'utils/userValidate'
 import { signup } from 'services/userServices'
 import AuthForm from 'components/authform'
 import Loader from 'components/loader'
@@ -11,6 +12,7 @@ const Signup = () => {
   const [loading, setLoading] = useState(false)
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
   const initialValues = {
     name: '',
     title: '',
@@ -18,40 +20,6 @@ const Signup = () => {
     contact: '',
     password: '',
     confirmPassword: ''
-  }
-
-  const validate = values => {
-    const errors = {}
-
-    if (!values.name) {
-      errors.name = 'Required'
-    }
-
-    if (!values.title) {
-      errors.title = 'Required'
-    }
-
-    if (!values.email) {
-      errors.email = 'Required'
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-      errors.email = 'Invalid email address'
-    }
-
-    if (!values.contact) {
-      errors.contact = 'Required'
-    }
-
-    if (!values.password) {
-      errors.password = 'Required'
-    } else if (values.password.length < 5) {
-      errors.password = 'Must be 5 characters or more'
-    }
-
-    if (values.password != values.confirmPassword) {
-      errors.confirmPassword = 'Password and Confirm Password not same!'
-    }
-
-    return errors
   }
 
   const submit = async values => {
@@ -73,7 +41,7 @@ const Signup = () => {
       <AuthForm
         initialValues={initialValues}
         submit={submit}
-        validate={validate}
+        validate={validateUser}
         btnName='Sign Up'
         pathName='/login'
         authText='Login!'

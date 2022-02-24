@@ -1,19 +1,27 @@
 import PropTypes from 'prop-types'
+import MuiButton from '@mui/material/Button'
 
 import 'components/button/styles.css'
 
-const Button = ({ btnName }) => {
+const Button = ({ btnName, backgroundColor = '#00b8b0' }) => {
   return (
     <div className='sign-in-form-button'>
-      <button className='landing-page-button' type='submit'>
+      <MuiButton
+        style={{ backgroundColor }}
+        className='landing-page-button'
+        type='submit'
+        variant='contained'
+        data-flag={btnName}
+      >
         {btnName}
-      </button>
+      </MuiButton>
     </div>
   )
 }
 
 Button.propTypes = {
-  btnName: PropTypes.string.isRequired
+  btnName: PropTypes.string.isRequired,
+  backgroundColor: PropTypes.string.isRequired
 }
 
 export default Button

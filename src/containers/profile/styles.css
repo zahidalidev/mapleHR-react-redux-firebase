@@ -1,0 +1,79 @@
+.form-container {
+  margin-top: 7%;
+  margin-left: -40px;
+  text-align: center;
+}
+.form-container > div {
+  display: inline-block;
+  width: 512px;
+}
+
+.form-container-div {
+  font-style: normal;
+  font-weight: 400;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 10px;
+  position: relative;
+}
+.form-container-div > div {
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  margin: 0 auto 28px;
+  padding: 13% 20% 10%;
+  text-align: left;
+}
+.c-update {
+  color: #16a9a0;
+  margin-bottom: 44px;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.form-fields > hr {
+  border: 0.5px solid #d2d2d2;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+.form-fields > span {
+  background-color: #fff;
+  display: block;
+  font-size: 14px;
+  left: 50%;
+  margin-left: -10px;
+  position: absolute;
+  text-align: center;
+  top: -1px;
+  width: 25px;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+@media screen and (max-width: 550px) {
+  .form-container > div {
+    width: 90%;
+  }
+  .form-container {
+    margin-left: 0;
+  }
+
+  .form-container-div > div {
+    border: none;
+    box-shadow: none;
+    padding: 12% 15% 10%;
+  }
+}
+@media screen and (max-width: 450px) {
+  .form-container-div > div {
+    padding: 12% 12% 10%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .form-container-div > div {
+    padding: 12% 5% 10%;
+  }
+}
