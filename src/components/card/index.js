@@ -1,19 +1,22 @@
+import { useNavigate } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import Card from '@mui/material/Card'
 import CardMedia from '@mui/material/CardMedia'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import EmailIcon from '@mui/icons-material/Email'
 import CallIcon from '@mui/icons-material/Call'
-import PropTypes from 'prop-types'
 
 import 'components/card/styles.css'
 
 const UserCard = ({ allUsers }) => {
+  const navigate = useNavigate()
+
   return (
     <div className='cards-container'>
       {allUsers.map(item => (
         <div key={item.id} className='card-wrapper'>
-          <Card className='card'>
+          <Card onClick={() => navigate(`/People/${item.id}`, { state: item })} className='card'>
             <CardMedia className='media-card' component='img' image={item.image} alt='User Image' />
             <CardContent className='card-content-wrapper'>
               <Typography className='card-content c-card-title'>{item.name}</Typography>

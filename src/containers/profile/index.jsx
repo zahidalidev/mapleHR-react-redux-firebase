@@ -1,6 +1,7 @@
-import { useState } from 'react'
-// import { useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import { useFormik } from 'formik'
+import PropsTypes from 'prop-types'
+import { useLocation } from 'react-router-dom'
 
 import Button from 'components/button'
 import Loader from 'components/loader'
@@ -11,15 +12,26 @@ import 'containers/profile/styles.css'
 
 const Profile = () => {
   const [loading, setLoading] = useState(false)
+  const location = useLocation()
   //   const navigate = useNavigate()
   const initialValues = {
     name: '',
     title: '',
     email: '',
     contact: '',
-    password: '',
-    confirmPassword: ''
+    password: ''
   }
+
+  useEffect(() => {
+    const { name, title, email, contact, password } = location.state
+    formik.setValues({
+      name,
+      title,
+      email,
+      contact,
+      password
+    })
+  }, [location.state])
 
   const submit = async values => {
     try {
@@ -27,7 +39,6 @@ const Profile = () => {
       console.log(values)
       console.log('The flag is:', action)
       setLoading(true)
-      //   navigate('/people')
     } catch (error) {
       console.log('Login Error: ', error)
     }
@@ -68,6 +79,10 @@ const Profile = () => {
       </div>
     </>
   )
+}
+
+Profile.propTypes = {
+  route: PropsTypes.isRequired
 }
 
 export default Profile

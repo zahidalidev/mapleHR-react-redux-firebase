@@ -1,7 +1,14 @@
-import DataTable from 'react-data-table-component'
+import DataTable, { createTheme } from 'react-data-table-component'
+import { useNavigate } from 'react-router-dom'
 import PropsTypes from 'prop-types'
 
 const ExpandedComponent = ({ data }) => <pre>{JSON.stringify(data, null, 2)}</pre>
+
+createTheme('solarized', {
+  action: {
+    hover: 'rgb(230, 244, 255)'
+  }
+})
 
 const columns = [
   {
@@ -29,12 +36,17 @@ const columns = [
 ]
 
 const Table = ({ allUsers }) => {
+  const navigate = useNavigate()
+  console.log(allUsers)
   return (
     <DataTable
-      onRowClicked={row => console.log(row)}
+      theme='solarized'
+      onRowClicked={row => navigate(`/People/${row.id}`, { state: row })}
       columns={columns}
       data={allUsers}
       pagination
+      highlightOnHover
+      pointerOnHover
       paginationPerPage={15}
       expandableRowsComponent={ExpandedComponent}
     />

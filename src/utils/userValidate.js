@@ -25,8 +25,10 @@ export const validateUser = values => {
     errors.password = 'Must be 5 characters or more'
   }
 
-  if (values.password != values.confirmPassword) {
-    errors.confirmPassword = 'Password and Confirm Password not same!'
+  if (values.confirmPassword) {
+    if (values.password != values.confirmPassword) {
+      errors.confirmPassword = 'Password and Confirm Password not same!'
+    }
   }
 
   return errors
