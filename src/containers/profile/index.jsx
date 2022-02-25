@@ -1,19 +1,22 @@
 import { useState, useEffect } from 'react'
 import { useFormik } from 'formik'
-import PropsTypes from 'prop-types'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
+import { UPDATE_USER, REMOVE_USER } from 'store/allUsers'
 import Button from 'components/button'
 import Loader from 'components/loader'
 import Input from 'components/input'
 import { validateUser } from 'utils/userValidate'
+import { updateUser, removeUser } from 'services/userServices'
 
 import 'containers/profile/styles.css'
 
 const Profile = () => {
   const [loading, setLoading] = useState(false)
+  const dispatch = useDispatch()
   const location = useLocation()
-  //   const navigate = useNavigate()
+  const navigate = useNavigate()
   const initialValues = {
     name: '',
     title: '',
@@ -29,18 +32,26 @@ const Profile = () => {
       title,
       email,
       contact,
-      password
+      password: password || ''
     })
   }, [location.state])
 
   const submit = async values => {
+    setLoading(true)
     try {
       const action = document.activeElement.dataset.flag
-      console.log(values)
-      console.log('The flag is:', action)
-      setLoading(true)
+      const uid = location.state.id
+      if (action === 'Update') {
+        await updateUser({ ...values, uid })
+        dispatch(UPDATE_USER({ ...values, uid }))
+      } else {
+        await removeUser(uid)
+        dispatch(REMOVE_USER({ uid }))
+      }
+
+      navigate('/people')
     } catch (error) {
-      console.log('Login Error: ', error)
+      console.log('Updation Error: ', error)
     }
     setLoading(false)
   }
@@ -79,10 +90,6 @@ const Profile = () => {
       </div>
     </>
   )
-}
-
-Profile.propTypes = {
-  route: PropsTypes.isRequired
 }
 
 export default Profile

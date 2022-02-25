@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Button from '@mui/material/Button'
 import { styled } from '@mui/material/styles'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Switch from '@mui/material/Switch'
+
 import Card from 'components/card'
 import Table from 'components/table'
 
 import { ADD_ALL_USERS } from 'store/allUsers'
 import { getUsers } from 'services/userServices'
-import { useDispatch, useSelector } from 'react-redux'
 
 import 'containers/people/styles.css'
 
@@ -77,6 +78,7 @@ const People = () => {
   }, [])
 
   useEffect(() => {
+    console.log('lenght: ', allUsers.length)
     setCurrentUsers(allUsers)
   }, [allUsers])
 

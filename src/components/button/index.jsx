@@ -21,7 +21,7 @@ const Button = ({ btnName, backgroundColor = '#00b8b0' }) => {
 
 Button.propTypes = {
   btnName: PropTypes.string.isRequired,
-  backgroundColor: PropTypes.string.isRequired
+  backgroundColor: PropTypes.string
 }
 
 export default Button
