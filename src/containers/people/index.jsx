@@ -7,6 +7,7 @@ import Switch from '@mui/material/Switch'
 
 import Card from 'components/card'
 import Table from 'components/table'
+import Select from 'components/select'
 
 import { ADD_ALL_USERS } from 'store/allUsers'
 import { getUsers } from 'services/userServices'
@@ -78,7 +79,6 @@ const People = () => {
   }, [])
 
   useEffect(() => {
-    console.log('lenght: ', allUsers.length)
     setCurrentUsers(allUsers)
   }, [allUsers])
 
@@ -102,6 +102,14 @@ const People = () => {
     setCurrentUsers(filteredUsers)
   }
 
+  const handleFilter = titleArr => {
+    const filteredUsers = []
+    titleArr.forEach(obj => {
+      filteredUsers.push(...allUsers.filter(item => item.title.indexOf(obj.value) != -1))
+    })
+    setCurrentUsers(titleArr.length != 0 ? filteredUsers : allUsers)
+  }
+
   return (
     <div className='container-fluid people-container'>
       <div className='people-wrapper'>
@@ -123,7 +131,7 @@ const People = () => {
               <header className='card-bar' />
             </div>
 
-            <div className='search-bar'>
+            <div className='filter-container'>
               <span
                 style={{
                   border: '1px solid rgb(153, 153, 153)',
@@ -152,6 +160,8 @@ const People = () => {
                 label=''
                 onChange={handleChange}
               />
+
+              <Select handleFilter={handleFilter} />
             </div>
           </div>
           <header className='card-bar-body' />

@@ -94,8 +94,11 @@
   width: 280px;
 }
 
-.search-bar {
+.filter-container {
   margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
 }
 
 .search-input {
