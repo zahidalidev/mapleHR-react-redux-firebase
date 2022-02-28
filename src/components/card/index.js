@@ -23,7 +23,7 @@ const UserCard = ({ allUsers }) => {
     const endOffset = itemOffset + itemsPerPage
     setCurrentItems(allUsers.slice(itemOffset, endOffset))
     setPageCount(Math.floor(allUsers.length / itemsPerPage))
-  }, [itemOffset])
+  }, [itemOffset, allUsers])
 
   const handlePageClick = (event, pageNumber) => {
     const newOffset = (pageNumber * itemsPerPage) % allUsers.length
