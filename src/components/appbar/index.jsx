@@ -1,4 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { ListItem, ListItemIcon } from '@mui/material'
 import PropTypes from 'prop-types'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
@@ -8,13 +11,8 @@ import IconButton from '@mui/material/IconButton'
 import List from '@mui/material/List'
 import PeopleIcon from '@mui/icons-material/People'
 import LogoutIcon from '@mui/icons-material/ExitToApp'
-import LoginIcon from '@mui/icons-material/Login'
 import MenuIcon from '@mui/icons-material/Menu'
 import Toolbar from '@mui/material/Toolbar'
-import { ListItem, ListItemIcon } from '@mui/material'
-import { useDispatch, useSelector } from 'react-redux'
-import { useLocation, useNavigate } from 'react-router-dom'
-import { useEffect } from 'react'
 import Tooltip from '@mui/material/Tooltip'
 
 import { userLogout } from 'services/userServices'
@@ -27,18 +25,29 @@ function ResponsiveDrawer(props) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [currentMenu, setCurrentMenu] = useState('/')
 
-  const { token } = useSelector(state => state.user)
   const { pathname } = useLocation()
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const isLogin = currentMenu === '/login'
   const isHome = currentMenu === '/people'
+
+  const menus = [
+    {
+      title: 'People',
+      path: '/people',
+      icon: <PeopleIcon style={{ color: isHome && '#60b063' }} />
+    },
+    {
+      title: 'Logout',
+      path: '/login',
+      icon: <LogoutIcon />
+    }
+  ]
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
   }
-  console.log('token: ', token)
+
   useEffect(() => {
     setCurrentMenu(pathname)
   }, [pathname])
@@ -52,50 +61,26 @@ function ResponsiveDrawer(props) {
     }
   }
 
-  const logout = (
-    <Tooltip title='Logout'>
-      <ListItem
-        onClick={() => {
-          handleLogout()
-          navigate('/login')
-        }}
-        button
-        style={{ borderLeft: '5px solid #fff' }}
-      >
-        <ListItemIcon>
-          <LogoutIcon />
-        </ListItemIcon>
-      </ListItem>
-    </Tooltip>
-  )
-  const login = (
-    <Tooltip title='Login'>
-      <ListItem
-        onClick={() => navigate('/login')}
-        button
-        style={{ borderLeft: isLogin && '5px solid #60b063' }}
-      >
-        <ListItemIcon>
-          <LoginIcon style={{ color: isLogin && '#60b063' }} />
-        </ListItemIcon>
-      </ListItem>
-    </Tooltip>
-  )
-
   const drawer = (
     <div>
       <Toolbar />
       <List>
-        <ListItem
-          onClick={() => navigate('/people')}
-          button
-          style={{ borderLeft: isHome && '5px solid #60b063' }}
-        >
-          <ListItemIcon>
-            <PeopleIcon style={{ color: isHome && '#60b063' }} />
-          </ListItemIcon>
-        </ListItem>
-        {token != '' ? logout : login}
+        {menus.map(item => (
+          <Tooltip key={item.path} title='Logout'>
+            <ListItem
+              onClick={() => {
+                navigate(path)
+                item.path === '/login' && handleLogout()
+              }}
+              button
+              style={{
+                borderLeft: item.path === '/login' ? '5px solid #fff' : '5px solid #60b063'
+              }}
+            >
+              <ListItemIcon>{item.icon}</ListItemIcon>
+            </ListItem>
+          </Tooltip>
+        ))}
       </List>
     </div>
   )
