@@ -15,9 +15,10 @@ const slice = createSlice({
     REMOVE_USER: (users, action) => {
       const index = users.findIndex(item => item.uid === action.payload.uid)
       users.splice(index, 1)
-    }
+    },
+    REMOVE_ALL_USER: users => users.splice(0, users.length)
   }
 })
 
-export const { ADD_ALL_USERS, UPDATE_USER, REMOVE_USER } = slice.actions
+export const { ADD_ALL_USERS, UPDATE_USER, REMOVE_USER, REMOVE_ALL_USER } = slice.actions
 export default slice.reducer

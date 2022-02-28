@@ -1,13 +1,13 @@
 .people-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
   background-color: #fcfbfa;
-  margin: 0px;
 }
 .people-wrapper {
-  line-height: 1.5em;
-  margin-top: 3rem;
-  width: 95%;
+  margin-top: 1.5rem;
+  width: 94%;
+  margin: 1%;
+  margin-top: 40px;
   overflow: inherit !important;
   border-radius: 10px;
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
@@ -28,13 +28,10 @@
 }
 
 .card-title {
-  color: #000 !important;
-  font-size: 2rem !important;
-  font-weight: 400 !important;
-  line-height: 1.5em !important;
-  margin-bottom: 5px !important;
-  margin-top: 1.7rem !important;
+  font-size: 2rem;
+  font-weight: 400;
   margin: 0.3rem;
+  margin-top: 1.7rem;
   display: block;
 }
 
@@ -99,6 +96,8 @@
   display: flex;
   align-items: center;
   flex-direction: row;
+  flex-wrap: wrap;
+  align-content: stretch;
 }
 
 .search-input {

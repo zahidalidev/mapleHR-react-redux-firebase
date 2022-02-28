@@ -8,8 +8,9 @@ import Switch from '@mui/material/Switch'
 import Card from 'components/card'
 import Table from 'components/table'
 import Select from 'components/select'
+import AppBar from 'components/appbar'
 
-import { ADD_ALL_USERS } from 'store/allUsers'
+import { ADD_ALL_USERS, REMOVE_ALL_USER } from 'store/allUsers'
 import { getUsers } from 'services/userServices'
 
 import 'containers/people/styles.css'
@@ -63,6 +64,7 @@ const People = () => {
   const [isTable, setIsTable] = useState(true)
   const [currentUsers, setCurrentUsers] = useState([])
   const allUsers = useSelector(state => state.allUsers)
+  const user = useSelector(state => state.user)
   const dispatch = useDispatch()
 
   const getAllUsers = async () => {
@@ -70,17 +72,18 @@ const People = () => {
       const res = await getUsers()
       dispatch(ADD_ALL_USERS({ users: res }))
     } catch (error) {
+      dispatch(REMOVE_ALL_USER())
       console.log('Getting users error: ', error)
     }
   }
 
   useEffect(() => {
     getAllUsers()
-  }, [])
+  }, [user])
 
   useEffect(() => {
     setCurrentUsers(allUsers)
-  }, [allUsers])
+  }, [allUsers, user])
 
   const handleChange = () => {
     setIsTable(!isTable)
@@ -111,64 +114,68 @@ const People = () => {
   }
 
   return (
-    <div className='container-fluid people-container'>
-      <div className='people-wrapper'>
-        <div className='card-header '>
-          <span className='card-title'>People (0)</span>
-        </div>
-        <div className='card-root'>
-          <div>
-            <div>
-              <div className='card-scrollable'></div>
-              <div className='card-scroller'>
-                <div className='card-flexContainer'>
-                  <Button className='user-btn' variant='text'>
-                    All users
-                  </Button>
-                </div>
-                <span className='user-bottom'></span>
-              </div>
-              <header className='card-bar' />
-            </div>
+    <>
+      <AppBar />
 
-            <div className='filter-container'>
-              <span
-                style={{
-                  border: '1px solid rgb(153, 153, 153)',
-                  borderRadius: '7px',
-                  color: 'rgb(51, 51, 51)',
-                  padding: '0.5%'
-                }}
-              >
-                <span
-                  className='fa fa-search'
-                  style={{ color: 'rgba(0, 0, 0, 0.54)', fontSize: '0.9em' }}
-                ></span>
-                <input
-                  type='text'
-                  className='search-input'
-                  maxLength='30'
-                  minLength='2'
-                  placeholder='Search'
-                  onChange={hangleSearch}
-                />
-              </span>
-
-              <FormControlLabel
-                className='mui-switch'
-                control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
-                label=''
-                onChange={handleChange}
-              />
-
-              <Select handleFilter={handleFilter} />
-            </div>
+      <div className='container-fluid people-container'>
+        <div className='people-wrapper'>
+          <div className='card-header '>
+            <span className='card-title'>People ({allUsers.length})</span>
           </div>
-          <header className='card-bar-body' />
-          {isTable ? <Table allUsers={currentUsers} /> : <Card allUsers={currentUsers} />}
+          <div className='card-root'>
+            <div>
+              <div>
+                <div className='card-scrollable'></div>
+                <div className='card-scroller'>
+                  <div className='card-flexContainer'>
+                    <Button className='user-btn' variant='text'>
+                      All users
+                    </Button>
+                  </div>
+                  <span className='user-bottom'></span>
+                </div>
+                <header className='card-bar' />
+              </div>
+
+              <div className='filter-container'>
+                <span
+                  style={{
+                    border: '1px solid rgb(153, 153, 153)',
+                    borderRadius: '7px',
+                    color: 'rgb(51, 51, 51)',
+                    padding: '0.5%'
+                  }}
+                >
+                  <span
+                    className='fa fa-search'
+                    style={{ color: 'rgba(0, 0, 0, 0.54)', fontSize: '0.9em' }}
+                  ></span>
+                  <input
+                    type='text'
+                    className='search-input'
+                    maxLength='30'
+                    minLength='2'
+                    placeholder='Search'
+                    onChange={hangleSearch}
+                  />
+                </span>
+
+                <FormControlLabel
+                  className='mui-switch'
+                  control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
+                  label=''
+                  onChange={handleChange}
+                />
+
+                <Select handleFilter={handleFilter} />
+              </div>
+            </div>
+            <header className='card-bar-body' />
+            {isTable ? <Table allUsers={currentUsers} /> : <Card allUsers={currentUsers} />}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 
