@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Card from '@mui/material/Card'
@@ -7,14 +8,32 @@ import Typography from '@mui/material/Typography'
 import EmailIcon from '@mui/icons-material/Email'
 import CallIcon from '@mui/icons-material/Call'
 
+import Pagination from 'components/pagination'
+
 import 'components/card/styles.css'
 
 const UserCard = ({ allUsers }) => {
-  const navigate = useNavigate()
+  const [currentItems, setCurrentItems] = useState([])
+  const [pageCount, setPageCount] = useState(0)
+  const [itemOffset, setItemOffset] = useState(0)
 
+  const itemsPerPage = 12
+
+  useEffect(() => {
+    const endOffset = itemOffset + itemsPerPage
+    setCurrentItems(allUsers.slice(itemOffset, endOffset))
+    setPageCount(Math.floor(allUsers.length / itemsPerPage))
+  }, [itemOffset])
+
+  const handlePageClick = (event, pageNumber) => {
+    const newOffset = (pageNumber * itemsPerPage) % allUsers.length
+    setItemOffset(newOffset)
+  }
+
+  const navigate = useNavigate()
   return (
     <div className='cards-container'>
-      {allUsers.map(item => (
+      {currentItems.map(item => (
         <div key={item.id} className='card-wrapper'>
           <Card onClick={() => navigate(`/People/${item.id}`, { state: item })} className='card'>
             <CardMedia className='media-card' component='img' image={item.image} alt='User Image' />
@@ -37,6 +56,8 @@ const UserCard = ({ allUsers }) => {
           </Card>
         </div>
       ))}
+
+      <Pagination pageCount={pageCount} handlePageClick={handlePageClick} />
     </div>
   )
 }
