@@ -2,7 +2,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-  getAuth
+  getAuth,
+  signInWithCustomToken
 } from 'firebase/auth'
 import { firebaseAuth, firebaseFirestore } from 'config/firebase'
 import { collection, addDoc, getDocs, updateDoc, doc, deleteDoc } from 'firebase/firestore'
@@ -24,6 +25,11 @@ export const signup = async (name, title, email, contact, password, image) => {
 
 export const login = async (email, password) => {
   return await signInWithEmailAndPassword(firebaseAuth, email, password)
+}
+
+export const loginWithToken = async token => {
+  const auth = getAuth()
+  return await signInWithCustomToken(auth, token)
 }
 
 export const userLogout = async () => {

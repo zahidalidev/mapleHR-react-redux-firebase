@@ -69,7 +69,7 @@ function ResponsiveDrawer(props) {
           <Tooltip key={item.path} title='Logout'>
             <ListItem
               onClick={() => {
-                navigate(path)
+                navigate(item.path)
                 item.path === '/login' && handleLogout()
               }}
               button

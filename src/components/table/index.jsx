@@ -1,6 +1,7 @@
 import DataTable, { createTheme } from 'react-data-table-component'
 import { useNavigate } from 'react-router-dom'
 import PropsTypes from 'prop-types'
+import Skeleton, { Table } from '@nejcm/react-skeleton-emotion'
 
 createTheme('solarized', {
   action: {
@@ -38,10 +39,10 @@ const columns = [
   }
 ]
 
-const Table = ({ allUsers }) => {
+const CusTable = ({ allUsers }) => {
   const navigate = useNavigate()
 
-  return (
+  const table = (
     <DataTable
       theme='solarized'
       onRowClicked={row => navigate(`/People/${row.id}`, { state: row })}
@@ -54,10 +55,18 @@ const Table = ({ allUsers }) => {
       paginationPerPage={15}
     />
   )
+
+  const skeleton = (
+    <Skeleton>
+      <Table rows={5} cols={[<u key={'a'}></u>]} />
+    </Skeleton>
+  )
+
+  return allUsers.length != 0 ? table : skeleton
 }
 
-Table.propTypes = {
+CusTable.propTypes = {
   allUsers: PropsTypes.array.isRequired
 }
 
-export default Table
+export default CusTable
