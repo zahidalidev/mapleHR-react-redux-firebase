@@ -1,9 +1,8 @@
 import {
-  getAuth,
   createUserWithEmailAndPassword,
+  getAuth,
   signInWithEmailAndPassword,
   signOut,
-  getAuth,
   signInWithCustomToken
 } from 'firebase/auth'
 import { firebaseAuth, firebaseFirestore } from 'config/firebase'

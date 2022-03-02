@@ -11,7 +11,7 @@ createTheme('solarized', {
   }
 })
 
-const Table = ({ allUsers }) => {
+const CusTable = ({ allUsers }) => {
   const navigate = useNavigate()
 
   const table = (

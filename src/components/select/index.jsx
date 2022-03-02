@@ -12,12 +12,18 @@ const CustomSelect = ({ handleFilter }) => {
   const allUsers = useSelector(state => state.allUsers)
 
   useEffect(() => {
-    const allTitles = allUsers.map(item => {
-      return { value: item.title, label: item.title }
-    })
-
-    let unique = allTitles.filter((item, i, ar) => ar.indexOf(item) === i)
-    setOptions(unique)
+    setOptions(
+      allUsers
+        .map(item => item.title)
+        .filter((value, index, self) => {
+          if (self.indexOf(value) === index) {
+            return { value: value, label: value }
+          }
+        })
+        .map(title => {
+          return { value: title, label: title }
+        })
+    )
   }, [allUsers])
 
   return (
