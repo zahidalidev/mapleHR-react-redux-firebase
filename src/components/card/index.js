@@ -1,12 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import Card from '@mui/material/Card'
-import CardMedia from '@mui/material/CardMedia'
-import CardContent from '@mui/material/CardContent'
-import Typography from '@mui/material/Typography'
-import EmailIcon from '@mui/icons-material/Email'
-import CallIcon from '@mui/icons-material/Call'
+import { Card, CardMedia, Typography, CardContent } from '@mui/material'
+import { Call, Email } from '@mui/icons-material'
 
 import Pagination from 'components/pagination'
 
@@ -16,6 +12,7 @@ const UserCard = ({ allUsers }) => {
   const [currentItems, setCurrentItems] = useState([])
   const [pageCount, setPageCount] = useState(0)
   const [itemOffset, setItemOffset] = useState(0)
+  const navigate = useNavigate()
 
   const itemsPerPage = 12
 
@@ -30,7 +27,6 @@ const UserCard = ({ allUsers }) => {
     setItemOffset(newOffset)
   }
 
-  const navigate = useNavigate()
   return (
     <div className='cards-container'>
       {currentItems.map(item => (
@@ -41,14 +37,13 @@ const UserCard = ({ allUsers }) => {
               <Typography className='card-content c-card-title'>{item.name}</Typography>
               <Typography className='card-content card-id'>ID-{item.id}</Typography>
               <div className='icon-wrapper'>
-                <EmailIcon className='card-content' />
+                <Email className='card-content' />
                 <Typography className='card-content card-email'>{item.email}</Typography>
               </div>
               <div className='icon-wrapper'>
-                <CallIcon className='card-content' />
+                <Call className='card-content' />
                 <Typography className='card-content card-contact'>{item.contact}</Typography>
               </div>
-
               <div className='user-designation'>
                 <p className='user-designationText'>{item.title}</p>
               </div>
