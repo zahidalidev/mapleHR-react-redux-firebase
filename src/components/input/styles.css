@@ -12,11 +12,11 @@
 }
 
 .field-error {
-  border: 0.5px solid red;
+  border: 0.5px solid #ff0000;
 }
 
 .validation-error {
-  color: rgb(244, 67, 54);
+  color: #f1463a;
   font-size: 12px;
   line-height: 14px;
 }

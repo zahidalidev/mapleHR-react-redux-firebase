@@ -19,7 +19,7 @@
 .form-container-div > div {
   background: #fff;
   border-radius: 2px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 24px #0000001a;
   margin: 0 auto 28px;
   padding: 13% 20% 10%;
   text-align: left;
@@ -31,7 +31,7 @@
   margin-bottom: 0 !important;
 }
 .form-fields > span {
-  background-color: #fff;
+  background-color: #ffffff;
   display: block;
   font-size: 14px;
   left: 50%;
