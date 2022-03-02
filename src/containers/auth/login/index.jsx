@@ -22,11 +22,7 @@ const Login = () => {
     try {
       setLoading(true)
       const { user } = await login(values.email, values.password)
-      dispatch(USER_LOGIN({ token: user.email }))
-
-      // console.log(user)
-      // const res = await loginWithToken(user.accessToken)
-      // console.log(res)
+      dispatch(USER_LOGIN({ token: user.accessToken }))
 
       navigate('/people')
     } catch (error) {

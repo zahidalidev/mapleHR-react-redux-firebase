@@ -6,11 +6,11 @@ const slice = createSlice({
   reducers: {
     USER_SIGNUP: (user, action) => {
       user.token = action.payload.token
-      localStorage.setItem('token', user)
+      localStorage.setItem('token', JSON.stringify(user.token))
     },
     USER_LOGIN: (user, action) => {
       user.token = action.payload.token
-      localStorage.setItem('token', user)
+      localStorage.setItem('token', JSON.stringify(user.token))
     },
     USER_LOGOUT: user => {
       user.token = ''

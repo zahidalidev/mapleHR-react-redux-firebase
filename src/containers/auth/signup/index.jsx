@@ -28,7 +28,7 @@ const Signup = () => {
     try {
       setLoading(true)
       const user = await signup(name, title, email, contact, password, image)
-      dispatch(USER_SIGNUP({ token: user.email }))
+      dispatch(USER_SIGNUP({ token: user.accessToken }))
       navigate('/people')
     } catch (error) {
       console.log('signup Error: ', error)

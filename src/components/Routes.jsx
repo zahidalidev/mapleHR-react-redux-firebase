@@ -1,10 +1,16 @@
 import { Route, Routes, Navigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { onAuthStateChanged } from 'firebase/auth'
+import { firebaseAuth } from 'config/firebase'
 
 import Login from 'containers/auth/login'
 import People from 'containers/people'
 import Profile from 'containers/profile'
 import Signup from 'containers/auth/signup'
+
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { USER_LOGIN, USER_LOGOUT } from 'store/user'
 
 const routeList = [
   { path: '/People', component: <People /> },
@@ -13,6 +19,13 @@ const routeList = [
 
 const AppRoutes = () => {
   const { token } = useSelector(state => state.user)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    onAuthStateChanged(firebaseAuth, user => {
+      user ? dispatch(USER_LOGIN({ token: user.accessToken })) : dispatch(USER_LOGOUT())
+    })
+  }, [])
 
   return (
     <Routes>
