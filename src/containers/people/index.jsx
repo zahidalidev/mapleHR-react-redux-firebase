@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { Button, FormControlLabel, Switch } from '@mui/material'
 import { styled } from '@mui/material/styles'
+import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { ADD_ALL_USERS, REMOVE_ALL_USER } from 'store/allUsers'
-import { getUsers } from 'services/userServices'
-import Card from 'components/card'
-import Table from 'components/table'
-import Select from 'components/select'
 import AppBar from 'components/appbar'
+import { ADD_ALL_USERS, REMOVE_ALL_USER } from 'store/allUsers'
+import Card from 'components/card'
+import { getUsers } from 'services/userServices'
+import Select from 'components/select'
+import Table from 'components/table'
 
 import 'containers/people/styles.css'
 

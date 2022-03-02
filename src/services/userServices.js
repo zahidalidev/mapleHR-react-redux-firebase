@@ -1,3 +1,4 @@
+import { addDoc, collection, doc, deleteDoc, getDocs, updateDoc } from 'firebase/firestore'
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -6,7 +7,6 @@ import {
   signInWithCustomToken
 } from 'firebase/auth'
 import { firebaseAuth, firebaseFirestore } from 'config/firebase'
-import { addDoc, collection, doc, deleteDoc, getDocs, updateDoc } from 'firebase/firestore'
 
 export const signup = async (name, title, email, contact, password, image) => {
   const { user } = await createUserWithEmailAndPassword(firebaseAuth, email, password)

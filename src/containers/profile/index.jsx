@@ -3,12 +3,12 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { useFormik } from 'formik'
 
+import Button from 'components/button'
+import Input from 'components/input'
+import Loader from 'components/loader'
 import { UPDATE_USER, REMOVE_USER } from 'store/allUsers'
 import { updateUser, removeUser } from 'services/userServices'
 import { validateUser } from 'utils/userValidate'
-import Button from 'components/button'
-import Loader from 'components/loader'
-import Input from 'components/input'
 
 import 'containers/profile/styles.css'
 

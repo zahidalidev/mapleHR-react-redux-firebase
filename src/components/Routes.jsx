@@ -2,9 +2,9 @@ import { Route, Routes, Navigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 import Login from 'containers/auth/login'
-import Signup from 'containers/auth/signup'
 import People from 'containers/people'
 import Profile from 'containers/profile'
+import Signup from 'containers/auth/signup'
 
 const routeList = [
   { path: '/People', component: <People /> },

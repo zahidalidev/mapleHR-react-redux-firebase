@@ -1,6 +1,3 @@
-import { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { useLocation, useNavigate } from 'react-router-dom'
 import {
   AppBar,
   Box,
@@ -15,6 +12,9 @@ import {
 } from '@mui/material'
 import { Logout, People, Menu as MenuIcon } from '@mui/icons-material/'
 import PropTypes from 'prop-types'
+import { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import { userLogout } from 'services/userServices'
 import { USER_LOGOUT } from 'store/user'

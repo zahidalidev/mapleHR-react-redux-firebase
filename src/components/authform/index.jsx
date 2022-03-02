@@ -6,6 +6,7 @@ import Button from 'components/button'
 import Input from 'components/input'
 
 import 'components/authform/styles.css'
+
 import logo from 'assets/logo.png'
 
 const AuthForm = ({ authText, btnName, initialValues, pathName, submit, validate }) => {

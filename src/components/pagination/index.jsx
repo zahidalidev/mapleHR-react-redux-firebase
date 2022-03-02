@@ -1,5 +1,5 @@
-import { Pagination, PaginationItem, Stack } from '@mui/material'
 import { ArrowBack, ArrowForward } from '@mui/icons-material'
+import { Pagination, PaginationItem, Stack } from '@mui/material'
 import PropTypes from 'prop-types'
 
 import 'components/pagination/styles.css'

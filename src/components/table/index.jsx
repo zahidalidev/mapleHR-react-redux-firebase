@@ -1,7 +1,7 @@
 import DataTable, { createTheme } from 'react-data-table-component'
-import { useNavigate } from 'react-router-dom'
 import PropsTypes from 'prop-types'
 import Skeleton, { Table } from '@nejcm/react-skeleton-emotion'
+import { useNavigate } from 'react-router-dom'
 
 import { columns } from 'utils/constants'
 

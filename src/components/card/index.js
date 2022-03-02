@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import PropTypes from 'prop-types'
 import { Card, CardMedia, Typography, CardContent } from '@mui/material'
 import { Call, Email } from '@mui/icons-material'
+import PropTypes from 'prop-types'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import Pagination from 'components/pagination'
 

@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import Select from 'react-select'
 import makeAnimated from 'react-select/animated'
 import PropTypes from 'prop-types'
+import Select from 'react-select'
+import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 
 const animatedComponents = makeAnimated()
 
