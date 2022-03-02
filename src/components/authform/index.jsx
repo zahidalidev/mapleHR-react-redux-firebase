@@ -42,6 +42,7 @@ const AuthForm = ({ authText, btnName, initialValues, pathName, submit, validate
     </div>
   )
 }
+
 AuthForm.propTypes = {
   initialValues: PropTypes.object.isRequired,
   submit: PropTypes.func.isRequired,
