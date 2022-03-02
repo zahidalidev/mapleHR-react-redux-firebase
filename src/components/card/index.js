@@ -51,7 +51,6 @@ const UserCard = ({ allUsers }) => {
           </Card>
         </div>
       ))}
-
       <Pagination pageCount={pageCount} handlePageClick={handlePageClick} />
     </div>
   )
