@@ -1,16 +1,17 @@
+import { firebaseAuth } from 'config/firebase'
+import { onAuthStateChanged } from 'firebase/auth'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { onAuthStateChanged } from 'firebase/auth'
-import { firebaseAuth } from 'config/firebase'
+import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 
 import Login from 'containers/auth/login'
+import Loader from './loader'
 import People from 'containers/people'
 import Profile from 'containers/profile'
 import Signup from 'containers/auth/signup'
-
-import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { USER_LOGIN, USER_LOGOUT } from 'store/user'
+import { USER_LOGIN } from 'store/user'
 
 const routeList = [
   { path: '/People', component: <People /> },
@@ -18,16 +19,24 @@ const routeList = [
 ]
 
 const AppRoutes = () => {
+  const [loading, setLoading] = useState(true)
   const { token } = useSelector(state => state.user)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   useEffect(() => {
     onAuthStateChanged(firebaseAuth, user => {
-      user ? dispatch(USER_LOGIN({ token: user.accessToken })) : dispatch(USER_LOGOUT())
+      if (user) {
+        dispatch(USER_LOGIN({ token: user.accessToken }))
+        navigate('/people')
+      }
+      setLoading(false)
     })
-  }, [])
+  }, [token])
 
-  return (
+  return loading ? (
+    <Loader show={true} />
+  ) : (
     <Routes>
       {token &&
         routeList.map(item => (
