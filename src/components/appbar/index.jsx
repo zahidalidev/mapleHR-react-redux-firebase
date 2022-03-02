@@ -1,27 +1,29 @@
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { ListItem, ListItemIcon } from '@mui/material'
+import {
+  AppBar,
+  Box,
+  CssBaseline,
+  Drawer,
+  IconButton,
+  ListItem,
+  ListItemIcon,
+  List,
+  Toolbar,
+  Tooltip
+} from '@mui/material'
+import { Logout, People, Menu as MenuIcon } from '@mui/icons-material/'
 import PropTypes from 'prop-types'
-import AppBar from '@mui/material/AppBar'
-import Box from '@mui/material/Box'
-import CssBaseline from '@mui/material/CssBaseline'
-import Drawer from '@mui/material/Drawer'
-import IconButton from '@mui/material/IconButton'
-import List from '@mui/material/List'
-import PeopleIcon from '@mui/icons-material/People'
-import LogoutIcon from '@mui/icons-material/ExitToApp'
-import MenuIcon from '@mui/icons-material/Menu'
-import Toolbar from '@mui/material/Toolbar'
-import Tooltip from '@mui/material/Tooltip'
 
 import { userLogout } from 'services/userServices'
 import { USER_LOGOUT } from 'store/user'
 
+import 'components/appbar/styles.css'
+
 const drawerWidth = 80
 
-function ResponsiveDrawer(props) {
-  const { window } = props
+function ResponsiveDrawer() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [currentMenu, setCurrentMenu] = useState('/')
 
@@ -35,12 +37,12 @@ function ResponsiveDrawer(props) {
     {
       title: 'People',
       path: '/people',
-      icon: <PeopleIcon style={{ color: isHome && '#60b063' }} />
+      icon: <People style={{ color: isHome && '#60b063' }} />
     },
     {
       title: 'Logout',
       path: '/login',
-      icon: <LogoutIcon />
+      icon: <Logout />
     }
   ]
 
@@ -69,7 +71,7 @@ function ResponsiveDrawer(props) {
           <Tooltip key={item.path} title='Logout'>
             <ListItem
               onClick={() => {
-                navigate(path)
+                navigate(item.path)
                 item.path === '/login' && handleLogout()
               }}
               button
@@ -85,18 +87,16 @@ function ResponsiveDrawer(props) {
     </div>
   )
 
-  const container = window !== undefined ? () => window().document.body : undefined
-
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar
+        className='appbar'
         position='fixed'
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` }
         }}
-        style={{ backgroundColor: '#fff', boxShadow: 'none' }}
       >
         <Toolbar>
           <IconButton
@@ -106,13 +106,12 @@ function ResponsiveDrawer(props) {
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: 'none' } }}
           >
-            <MenuIcon style={{ color: 'black' }} />
+            <MenuIcon className='drawer-icon' />
           </IconButton>
         </Toolbar>
       </AppBar>
       <Box component='nav' sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}>
         <Drawer
-          container={container}
           variant='temporary'
           open={mobileOpen}
           onClose={handleDrawerToggle}

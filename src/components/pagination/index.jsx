@@ -1,8 +1,5 @@
-import Pagination from '@mui/material/Pagination'
-import PaginationItem from '@mui/material/PaginationItem'
-import Stack from '@mui/material/Stack'
-import ArrowBackIcon from '@mui/icons-material/ArrowBack'
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
+import { Pagination, PaginationItem, Stack } from '@mui/material'
+import { ArrowBack, ArrowForward } from '@mui/icons-material'
 import PropTypes from 'prop-types'
 
 import 'components/pagination/styles.css'
@@ -15,10 +12,7 @@ const CusPagination = ({ pageCount, handlePageClick }) => {
           count={pageCount}
           onChange={handlePageClick}
           renderItem={item => (
-            <PaginationItem
-              components={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
-              {...item}
-            />
+            <PaginationItem components={{ previous: ArrowBack, next: ArrowForward }} {...item} />
           )}
         />
       </Stack>

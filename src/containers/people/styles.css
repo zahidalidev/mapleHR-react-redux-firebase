@@ -110,3 +110,15 @@
 .mui-switch {
   margin-left: 0.1rem !important;
 }
+
+.p-border {
+  border: 1px solid rgb(153, 153, 153);
+  border-radius: 7px;
+  color: rgb(51, 51, 51);
+  padding: 0.5%;
+}
+
+.fa-search {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 0.9em;
+}

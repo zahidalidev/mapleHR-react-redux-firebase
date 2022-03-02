@@ -24,11 +24,6 @@
   padding: 13% 20% 10%;
   text-align: left;
 }
-.logo {
-  color: #aaa;
-  margin-bottom: 44px;
-  text-align: center;
-}
 
 .form-fields > hr {
   border: 0.5px solid #d2d2d2;
@@ -56,14 +51,22 @@
   color: #16a9a0 !important;
   text-decoration: none;
 }
+
 .landing-page-link:hover {
   color: #89229b !important;
+}
+
+.logo {
+  color: #aaa;
+  margin-bottom: 44px;
+  text-align: center;
 }
 
 @media screen and (max-width: 550px) {
   .form-container > div {
     width: 90%;
   }
+
   .form-container {
     margin-left: 0;
   }
@@ -77,10 +80,5 @@
 @media screen and (max-width: 450px) {
   .form-container-div > div {
     padding: 12% 12% 10%;
-  }
-}
-@media screen and (max-width: 400px) {
-  .form-container-div > div {
-    padding: 12% 5% 10%;
   }
 }

@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types'
 import MuiButton from '@mui/material/Button'
+import PropTypes from 'prop-types'
 
 import 'components/button/styles.css'
 

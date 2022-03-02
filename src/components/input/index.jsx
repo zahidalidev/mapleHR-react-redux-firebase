@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 
 import 'components/input/styles.css'
 
-const Input = ({ item, formik }) => {
+const Input = ({ formik, item }) => {
   const error = formik.errors[item]
 
   return (

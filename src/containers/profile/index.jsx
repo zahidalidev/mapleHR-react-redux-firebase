@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react'
-import { useFormik } from 'formik'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import { useFormik } from 'formik'
 
 import { UPDATE_USER, REMOVE_USER } from 'store/allUsers'
+import { updateUser, removeUser } from 'services/userServices'
+import { validateUser } from 'utils/userValidate'
 import Button from 'components/button'
 import Loader from 'components/loader'
 import Input from 'components/input'
-import { validateUser } from 'utils/userValidate'
-import { updateUser, removeUser } from 'services/userServices'
 
 import 'containers/profile/styles.css'
 
@@ -78,7 +78,6 @@ const Profile = () => {
                     <Input key={item} item={item} formik={formik} />
                   ))}
                 </div>
-
                 <div className='btn-container'>
                   <Button btnName='Update' />
                   <Button backgroundColor='#ff6347' btnName='Delete' />

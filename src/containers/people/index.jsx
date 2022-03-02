@@ -1,17 +1,14 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Button from '@mui/material/Button'
+import { Button, FormControlLabel, Switch } from '@mui/material'
 import { styled } from '@mui/material/styles'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import Switch from '@mui/material/Switch'
 
+import { ADD_ALL_USERS, REMOVE_ALL_USER } from 'store/allUsers'
+import { getUsers } from 'services/userServices'
 import Card from 'components/card'
 import Table from 'components/table'
 import Select from 'components/select'
 import AppBar from 'components/appbar'
-
-import { ADD_ALL_USERS, REMOVE_ALL_USER } from 'store/allUsers'
-import { getUsers } from 'services/userServices'
 
 import 'containers/people/styles.css'
 
@@ -116,7 +113,6 @@ const People = () => {
   return (
     <>
       <AppBar />
-
       <div className='container-fluid people-container'>
         <div className='people-wrapper'>
           <div className='card-header '>
@@ -136,20 +132,9 @@ const People = () => {
                 </div>
                 <header className='card-bar' />
               </div>
-
               <div className='filter-container'>
-                <span
-                  style={{
-                    border: '1px solid rgb(153, 153, 153)',
-                    borderRadius: '7px',
-                    color: 'rgb(51, 51, 51)',
-                    padding: '0.5%'
-                  }}
-                >
-                  <span
-                    className='fa fa-search'
-                    style={{ color: 'rgba(0, 0, 0, 0.54)', fontSize: '0.9em' }}
-                  ></span>
+                <span className='p-border'>
+                  <span className='fa fa-search'></span>
                   <input
                     type='text'
                     className='search-input'
@@ -159,14 +144,12 @@ const People = () => {
                     onChange={hangleSearch}
                   />
                 </span>
-
                 <FormControlLabel
                   className='mui-switch'
                   control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
                   label=''
                   onChange={handleChange}
                 />
-
                 <Select handleFilter={handleFilter} />
               </div>
             </div>
