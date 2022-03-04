@@ -1,5 +1,10 @@
-const sum = require('../utils/userValidate')
+const validate = require('../utils/userValidate')
 
-test('adds 1 and 2 to equal 3', () => {
-  expect(sum(1, 2)).toBe(3)
+const values = {
+  email: 'za@gmail.com',
+  password: '123723j2h'
+}
+
+test('Return {} if email and password are valid', () => {
+  expect(validate.validateLogin(values)).toMatchObject({})
 })

@@ -1,9 +1,5 @@
 {
   "name": "burger-builder",
-  "jest": {
-    "bail": 1,
-    "verbose": true
-  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -41,7 +37,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
