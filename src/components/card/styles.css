@@ -1,0 +1,92 @@
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.card-wrapper {
+  display: flex;
+  flex: 20%;
+  margin: 0.5rem;
+  margin-top: 2rem;
+}
+.card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 25.8rem;
+  height: 27rem;
+  border-radius: 20px !important;
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 #00000033;
+}
+
+.media-card {
+  object-fit: contain;
+  height: 136px;
+  width: 136px !important;
+  margin-top: 30px;
+  border-radius: 200px;
+}
+
+.card-title {
+  color: #000000;
+  margin-top: 2rem !important;
+}
+
+.card-content {
+  font-size: 1rem !important;
+  display: flex;
+  justify-content: space-around;
+  color: grey;
+  margin-top: 1rem !important;
+}
+
+.card-id {
+  margin-top: 1.3rem !important;
+}
+
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-email {
+  border-bottom: 1.8px solid #c9c9c9;
+  margin-bottom: 10px;
+  margin-left: 10px !important;
+}
+
+.card-contact {
+  margin-left: 10px !important;
+}
+
+.user-designation {
+  font-weight: 300;
+  line-height: 1.5em;
+  align-items: center;
+  background-color: #f1f6fd;
+  display: flex;
+  justify-content: center;
+  min-height: 70px;
+  padding: 0 10px;
+  text-transform: uppercase;
+  width: 25.8rem !important;
+  margin-top: 15px !important;
+}
+
+.user-designationText {
+  color: #333;
+  text-transform: uppercase;
+  font-size: 1rem !important;
+  font-weight: 700;
+  text-align: center;
+}
+
+.c-card-title {
+  color: #000000;
+  margin-top: 0.5rem;
+}

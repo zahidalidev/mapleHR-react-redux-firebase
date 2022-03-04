@@ -1,119 +1,150 @@
-import { useState, useEffect } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
-import Drawer from '@material-ui/core/Drawer'
-import MaterialList from '@material-ui/core/List'
-import _ from 'lodash'
-
-import { useSelector, useDispatch } from 'react-redux'
-import { USER_LOGOUT } from 'store/user'
 import {
-  Bars,
-  CollapseNav,
-  DrawerList,
-  DrawerWrapper,
-  Header,
-  Image,
-  Link,
+  AppBar,
+  Box,
+  CssBaseline,
+  Drawer,
+  IconButton,
+  ListItem,
+  ListItemIcon,
   List,
-  Logo,
-  Nav,
-  NavList
-} from 'components/appbar/style'
+  Toolbar,
+  Tooltip
+} from '@mui/material'
+import { Logout, People, Menu as MenuIcon } from '@mui/icons-material/'
+import PropTypes from 'prop-types'
+import { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { useLocation, useNavigate } from 'react-router-dom'
 
-import logo from 'assets/burger-logo.b8503d26.png'
+import { userLogout } from 'services/userServices'
+import { USER_LOGOUT } from 'store/user'
 
-const Appbar = () => {
-  const [toggle, setToggle] = useState({ left: false })
+import 'components/appbar/styles.css'
+
+const drawerWidth = 80
+
+function ResponsiveDrawer() {
+  const [mobileOpen, setMobileOpen] = useState(false)
   const [currentMenu, setCurrentMenu] = useState('/')
 
-  const user = useSelector(state => state.user)
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
   const { pathname } = useLocation()
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
-  const isLogin = currentMenu === '/login'
-  const isOrders = currentMenu === '/orders'
-  const isHome = currentMenu === '/'
-  const activeMenu = drawerClass => (drawerClass ? 'active-menu-drawer' : 'active-menu')
+  const isHome = currentMenu === '/people'
+
+  const menus = [
+    {
+      title: 'People',
+      path: '/people',
+      icon: <People style={{ color: isHome && '#60b063' }} />
+    },
+    {
+      title: 'Logout',
+      path: '/login',
+      icon: <Logout />
+    }
+  ]
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen)
+  }
 
   useEffect(() => {
     setCurrentMenu(pathname)
   }, [pathname])
 
-  const toggleDrawer = open => () => {
-    setToggle({ ...toggle, left: open })
+  const handleLogout = async () => {
+    try {
+      await userLogout()
+      dispatch(USER_LOGOUT())
+    } catch (error) {
+      console.log('logout error: ', error)
+    }
   }
 
-  const handleLogout = () => {
-    dispatch(USER_LOGOUT())
-    navigate('/')
-  }
-
-  const handleNavigation = menu => {
-    setCurrentMenu(menu)
-    navigate(menu)
-  }
-
-  const loginMenu = (navClass, drawerClass) => (
-    <>
-      <List navClass={navClass} isActive={`${isOrders ? activeMenu(drawerClass) : false}`}>
-        <Link onClick={() => handleNavigation('/orders')}>Orders</Link>
+  const drawer = (
+    <div>
+      <Toolbar />
+      <List>
+        {menus.map(item => (
+          <Tooltip key={item.path} title='Logout'>
+            <ListItem
+              onClick={() => {
+                navigate(item.path)
+                item.path === '/login' && handleLogout()
+              }}
+              button
+              style={{
+                borderLeft: item.path === '/login' ? '5px solid #fff' : '5px solid #60b063'
+              }}
+            >
+              <ListItemIcon>{item.icon}</ListItemIcon>
+            </ListItem>
+          </Tooltip>
+        ))}
       </List>
-      <List navClass={navClass}>
-        <Link onClick={handleLogout}>Logout</Link>
-      </List>
-    </>
-  )
-
-  const logoutMenu = (navClass, drawerClass) => (
-    <List navClass={navClass} isActive={`${isLogin ? activeMenu(drawerClass) : false}`}>
-      <Link onClick={() => handleNavigation('/login')}>Login</Link>
-    </List>
-  )
-
-  const menuList = (navClass, drawerClass) => (
-    <>
-      <List navClass={navClass} isActive={`${isHome ? activeMenu(drawerClass) : false}`}>
-        <Link onClick={() => handleNavigation('/')}>Burger Builder</Link>
-      </List>
-      {!_.isEmpty(user) ? loginMenu(navClass, drawerClass) : logoutMenu(navClass, drawerClass)}
-    </>
-  )
-
-  const drawerList = () => (
-    <DrawerWrapper onClick={toggleDrawer(false)}>
-      <Image onClick={() => handleNavigation('/')} src={logo} />
-      <MaterialList>
-        <DrawerList>{menuList(false, true)}</DrawerList>
-      </MaterialList>
-    </DrawerWrapper>
+    </div>
   )
 
   return (
-    <Header>
-      <Drawer open={toggle['left']} onClose={toggleDrawer(false)}>
-        {drawerList()}
-      </Drawer>
-
-      <Nav className='navbar-expand-lg py-3 py-lg-0'>
-        <button
-          type='button'
-          className='navbar-toggler'
-          data-toggle='collapse'
-          data-target='#navbarCollapse'
-          onClick={toggleDrawer(true)}
+    <Box sx={{ display: 'flex' }}>
+      <CssBaseline />
+      <AppBar
+        className='appbar'
+        position='fixed'
+        sx={{
+          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          ml: { sm: `${drawerWidth}px` }
+        }}
+      >
+        <Toolbar>
+          <IconButton
+            color='inherit'
+            aria-label='open drawer'
+            edge='start'
+            onClick={handleDrawerToggle}
+            sx={{ mr: 2, display: { sm: 'none' } }}
+          >
+            <MenuIcon className='drawer-icon' />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+      <Box component='nav' sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}>
+        <Drawer
+          variant='temporary'
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          ModalProps={{
+            keepMounted: true
+          }}
+          sx={{
+            display: { xs: 'block', sm: 'none' },
+            '& .MuiDrawer-paper': { width: drawerWidth }
+          }}
         >
-          <Bars onClick={toggleDrawer(true)} className='fa fa-bars'></Bars>
-        </button>
-
-        <Logo onClick={() => handleNavigation('/')} src={logo} />
-
-        <CollapseNav className='collapse navbar-collapse'>
-          <NavList>{menuList(true, false)}</NavList>
-        </CollapseNav>
-      </Nav>
-    </Header>
+          {drawer}
+        </Drawer>
+        <Drawer
+          variant='permanent'
+          sx={{
+            display: { xs: 'none', sm: 'block' },
+            '& .MuiDrawer-paper': { width: drawerWidth }
+          }}
+          open
+        >
+          {drawer}
+        </Drawer>
+      </Box>
+      <Box component='main' sx={{ flexGrow: 1, width: { sm: `calc(100% - ${drawerWidth}px)` } }}>
+        <Toolbar />
+      </Box>
+    </Box>
   )
 }
 
-export default Appbar
+ResponsiveDrawer.propTypes = {
+  window: PropTypes.func
+}
+
+export default ResponsiveDrawer

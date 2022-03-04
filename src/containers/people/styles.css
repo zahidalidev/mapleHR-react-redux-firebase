@@ -1,0 +1,123 @@
+.people-container {
+  display: flex;
+  justify-content: flex-end;
+  background-color: #fcfbfa;
+}
+.people-wrapper {
+  margin-top: 1.5rem;
+  width: 94%;
+  margin: 1%;
+  margin-top: 40px;
+  overflow: inherit !important;
+  border-radius: 10px;
+  box-shadow: 0px 2px 1px -1px #00000033, 0px 1px 1px 0px #00000024, 0px 1px 3px 0px #0000001f;
+  background-color: #ffffff;
+}
+
+.card-header {
+  margin: -20px 15px 0;
+  display: flex;
+  padding: 16px;
+  align-items: center;
+  margin-left: 0px;
+  padding-top: 20px;
+  margin-right: 0px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.card-title {
+  font-size: 2rem;
+  font-weight: 400;
+  margin: 0.3rem;
+  margin-top: 1.7rem;
+  display: block;
+}
+
+.card-root {
+  padding: 16px;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 24px;
+}
+
+.card-bar {
+  border-bottom: 2px solid #d3d8e6;
+}
+
+.card-bar-body {
+  margin-top: 1rem;
+  border-bottom: 1px solid #949494;
+}
+
+.card-scrollable {
+  position: absolute;
+  top: -9999px;
+  overflow: scroll;
+}
+
+.card-scroller {
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+}
+
+.user-btn {
+  border: 0;
+  cursor: pointer;
+  padding: 6px 12px;
+  min-height: 48px;
+  min-width: 160px;
+  display: flex;
+  width: 280px;
+  justify-content: space-evenly;
+  color: #858484 !important;
+  font-size: 1.2rem !important;
+  font-weight: 400 !important;
+  text-transform: uppercase;
+}
+
+.user-btn:hover {
+  background-color: transparent !important;
+}
+
+.user-bottom {
+  bottom: 0;
+  position: absolute;
+  height: 4px;
+  background-color: #27bab1;
+  left: 0px;
+  width: 280px;
+}
+
+.filter-container {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: stretch;
+}
+
+.search-input {
+  border: none;
+  box-shadow: none;
+  padding-left: 5px;
+  outline: 0;
+}
+
+.mui-switch {
+  margin-left: 0.1rem !important;
+}
+
+.p-border {
+  border: 1px solid #999999;
+  border-radius: 7px;
+  color: #333333;
+  padding: 0.5%;
+}
+
+.fa-search {
+  color: #0000008a;
+  font-size: 0.9em;
+}

@@ -1,0 +1,17 @@
+.sign-in-form-button {
+  margin-top: 15px;
+}
+.landing-page-button {
+  border: none;
+  border-radius: 7px;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  padding: 10px;
+  width: 100%;
+}
+.landing-page-button:disabled {
+  opacity: 0.3;
+}
