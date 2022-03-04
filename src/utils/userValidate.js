@@ -11,7 +11,6 @@ export const validateLogin = values => {
   } else if (values.password.length < 5) {
     errors.password = 'Must be 5 characters or more'
   }
-  console.log('errors: ', errors)
   return errors
 }
 
