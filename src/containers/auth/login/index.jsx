@@ -4,7 +4,7 @@ import { USER_LOGIN } from 'store/user'
 import { useNavigate } from 'react-router-dom'
 
 import { login } from 'services/userServices'
-import { loginValidate } from 'utils/userValidate'
+import { loginValidate as validateLogin } from 'utils/userValidate'
 import AuthForm from 'components/authform'
 import Loader from 'components/loader'
 
@@ -37,7 +37,7 @@ const Login = () => {
       <AuthForm
         initialValues={initialValues}
         submit={submit}
-        validate={loginValidate}
+        validate={validateLogin}
         btnName='Sign In'
         pathName='/signup'
         authText='Create account!'

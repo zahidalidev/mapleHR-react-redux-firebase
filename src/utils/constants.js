@@ -27,3 +27,6 @@ export const columns = [
     sortable: true
   }
 ]
+
+export const demoImg =
+  'https://www.interlinecenter.com/wp-content/uploads/2016/10/dummy-user-img.png'

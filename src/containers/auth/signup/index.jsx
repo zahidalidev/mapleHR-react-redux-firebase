@@ -2,11 +2,12 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
+import AuthForm from 'components/authform'
+import { demoImg } from 'utils/constants'
+import Loader from 'components/loader'
+import { signup } from 'services/userServices'
 import { USER_SIGNUP } from 'store/user'
 import { validateUser } from 'utils/userValidate'
-import { signup } from 'services/userServices'
-import AuthForm from 'components/authform'
-import Loader from 'components/loader'
 
 const Signup = () => {
   const [loading, setLoading] = useState(false)
@@ -24,7 +25,7 @@ const Signup = () => {
 
   const submit = async values => {
     const { name, title, email, contact, password } = values
-    const image = 'https://www.interlinecenter.com/wp-content/uploads/2016/10/dummy-user-img.png'
+    const image = demoImg
     try {
       setLoading(true)
       const user = await signup(name, title, email, contact, password, image)

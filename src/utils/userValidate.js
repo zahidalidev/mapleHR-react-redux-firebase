@@ -1,4 +1,4 @@
-export const loginValidate = values => {
+export const validateLogin = values => {
   const errors = {}
   if (!values.email) {
     errors.email = 'Required'
@@ -49,4 +49,8 @@ export const validateUser = values => {
   }
 
   return errors
+}
+
+export const sum = (a, b) => {
+  return a + b
 }
