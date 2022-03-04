@@ -3,14 +3,16 @@ import { useDispatch } from 'react-redux'
 import { USER_LOGIN } from 'store/user'
 import { useNavigate } from 'react-router-dom'
 
+import { login } from 'services/userServices'
+import { loginValidate as validateLogin } from 'utils/userValidate'
 import AuthForm from 'components/authform'
 import Loader from 'components/loader'
-import { login } from 'services/userServices'
 
 const Login = () => {
   const [loading, setLoading] = useState(false)
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
   const initialValues = {
     email: '',
     password: ''
@@ -20,7 +22,8 @@ const Login = () => {
     try {
       setLoading(true)
       const { user } = await login(values.email, values.password)
-      dispatch(USER_LOGIN({ token: user.email }))
+      dispatch(USER_LOGIN({ token: user.accessToken }))
+
       navigate('/people')
     } catch (error) {
       console.log('Login Error: ', error)
@@ -34,6 +37,7 @@ const Login = () => {
       <AuthForm
         initialValues={initialValues}
         submit={submit}
+        validate={validateLogin}
         btnName='Sign In'
         pathName='/signup'
         authText='Create account!'

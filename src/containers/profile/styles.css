@@ -17,12 +17,18 @@
   position: relative;
 }
 .form-container-div > div {
-  background: #fff;
+  background: #ffffff;
   border-radius: 2px;
   box-shadow: 0 4px 24px #0000001a;
   margin: 0 auto 28px;
   padding: 13% 20% 10%;
   text-align: left;
+}
+.c-update {
+  color: #16a9a0;
+  margin-bottom: 44px;
+  text-align: center;
+  font-size: 2rem;
 }
 
 .form-fields > hr {
@@ -42,31 +48,15 @@
   width: 25px;
 }
 
-.landing-page-link {
-  display: block;
-  font-size: 13px;
-  margin-top: 15px;
-  text-align: center;
-  width: 100%;
-  color: #16a9a0 !important;
-  text-decoration: none;
-}
-
-.landing-page-link:hover {
-  color: #89229b !important;
-}
-
-.logo {
-  color: #aaa;
-  margin-bottom: 44px;
-  text-align: center;
+.btn-container {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 @media screen and (max-width: 550px) {
   .form-container > div {
     width: 90%;
   }
-
   .form-container {
     margin-left: 0;
   }
@@ -80,5 +70,10 @@
 @media screen and (max-width: 450px) {
   .form-container-div > div {
     padding: 12% 12% 10%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .form-container-div > div {
+    padding: 12% 5% 10%;
   }
 }

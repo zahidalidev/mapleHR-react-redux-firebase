@@ -1,17 +1,16 @@
 .people-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
   background-color: #fcfbfa;
-  margin: 0px;
 }
 .people-wrapper {
-  line-height: 1.5em;
-  margin-top: 3rem;
-  width: 90%;
+  margin-top: 1.5rem;
+  width: 94%;
+  margin: 1%;
+  margin-top: 40px;
   overflow: inherit !important;
   border-radius: 10px;
-  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
-    0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 2px 1px -1px #00000033, 0px 1px 1px 0px #00000024, 0px 1px 3px 0px #0000001f;
   background-color: #ffffff;
 }
 
@@ -28,13 +27,10 @@
 }
 
 .card-title {
-  color: #000 !important;
-  font-size: 2rem !important;
-  font-weight: 400 !important;
-  line-height: 1.5em !important;
-  margin-bottom: 5px !important;
-  margin-top: 1.7rem !important;
+  font-size: 2rem;
+  font-weight: 400;
   margin: 0.3rem;
+  margin-top: 1.7rem;
   display: block;
 }
 
@@ -47,6 +43,11 @@
 
 .card-bar {
   border-bottom: 2px solid #d3d8e6;
+}
+
+.card-bar-body {
+  margin-top: 1rem;
+  border-bottom: 1px solid #949494;
 }
 
 .card-scrollable {
@@ -89,8 +90,13 @@
   width: 280px;
 }
 
-.search-bar {
+.filter-container {
   margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: stretch;
 }
 
 .search-input {
@@ -102,4 +108,16 @@
 
 .mui-switch {
   margin-left: 0.1rem !important;
+}
+
+.p-border {
+  border: 1px solid #999999;
+  border-radius: 7px;
+  color: #333333;
+  padding: 0.5%;
+}
+
+.fa-search {
+  color: #0000008a;
+  font-size: 0.9em;
 }

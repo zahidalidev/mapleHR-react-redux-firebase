@@ -1,7 +1,14 @@
-import Button from '@mui/material/Button'
+import { Button, FormControlLabel, Switch } from '@mui/material'
 import { styled } from '@mui/material/styles'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import Switch from '@mui/material/Switch'
+import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
+import AppBar from 'components/appbar'
+import { ADD_ALL_USERS, REMOVE_ALL_USER } from 'store/allUsers'
+import Card from 'components/card'
+import { getUsers } from 'services/userServices'
+import Select from 'components/select'
+import Table from 'components/table'
 
 import 'containers/people/styles.css'
 
@@ -11,9 +18,9 @@ const MaterialUISwitch = styled(Switch)(() => ({
   padding: 4,
   '& .MuiSwitch-switchBase': {
     padding: 0,
-    transform: 'translateX(6px)',
+    transform: 'translateX(0px)',
     '&.Mui-checked': {
-      transform: 'translateX(22px)',
+      transform: 'translateX(25px)',
       '& .MuiSwitch-thumb:before': {
         backgroundImage:
           'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABSSURBVHgB7ZHBCQAgCEV/0CCN0mg1Sps0SiO4QV3FgyRFEPhAUPB7eAKOlWmozINRHGrYh/AVmpOiBaWjqux2vCCIObGecPAZ7qQbcqqjAecqCw7WHKzQS/12AAAAAElFTkSuQmCC)'
@@ -51,59 +58,107 @@ const MaterialUISwitch = styled(Switch)(() => ({
 }))
 
 const People = () => {
+  const [isTable, setIsTable] = useState(true)
+  const [currentUsers, setCurrentUsers] = useState([])
+  const allUsers = useSelector(state => state.allUsers)
+  const user = useSelector(state => state.user)
+  const dispatch = useDispatch()
+
+  const getAllUsers = async () => {
+    try {
+      const res = await getUsers()
+      dispatch(ADD_ALL_USERS({ users: res }))
+    } catch (error) {
+      dispatch(REMOVE_ALL_USER())
+      console.log('Getting users error: ', error)
+    }
+  }
+
+  useEffect(() => {
+    getAllUsers()
+  }, [user])
+
+  useEffect(() => {
+    setCurrentUsers(allUsers)
+  }, [allUsers, user])
+
+  const handleChange = () => {
+    setIsTable(!isTable)
+  }
+
+  const hangleSearch = e => {
+    const value = e.target.value.toUpperCase()
+    const filteredUsers = allUsers.filter(item => {
+      const { name, title, email, contact } = item
+      if (
+        name.toUpperCase().indexOf(value) != -1 ||
+        title.toUpperCase().indexOf(value) != -1 ||
+        email.toUpperCase().indexOf(value) != -1 ||
+        contact.toUpperCase().indexOf(value) != -1
+      ) {
+        return item
+      }
+    })
+    setCurrentUsers(filteredUsers)
+  }
+
+  const handleFilter = titleArr => {
+    const filteredUsers = []
+    titleArr.forEach(obj => {
+      filteredUsers.push(...allUsers.filter(item => item.title.indexOf(obj.value) != -1))
+    })
+    setCurrentUsers(titleArr.length != 0 ? filteredUsers : allUsers)
+  }
+
   return (
-    <div className='container-fluid people-container'>
-      <div className='people-wrapper'>
-        <div className='card-header '>
-          <span className='card-title'>People (0)</span>
-        </div>
-        <div className='card-root'>
-          <div>
+    <>
+      <AppBar />
+      <div className='container-fluid people-container'>
+        <div className='people-wrapper'>
+          <div className='card-header '>
+            <span className='card-title'>People ({allUsers.length})</span>
+          </div>
+          <div className='card-root'>
             <div>
-              <div className='card-scrollable'></div>
-              <div className='card-scroller'>
-                <div className='card-flexContainer'>
-                  <Button className='user-btn' variant='text'>
-                    All users
-                  </Button>
+              <div>
+                <div className='card-scrollable'></div>
+                <div className='card-scroller'>
+                  <div className='card-flexContainer'>
+                    <Button className='user-btn' variant='text'>
+                      All users
+                    </Button>
+                  </div>
+                  <span className='user-bottom'></span>
                 </div>
-                <span className='user-bottom'></span>
+                <header className='card-bar' />
               </div>
-              <header className='card-bar' />
-            </div>
-
-            <div className='search-bar'>
-              <span
-                style={{
-                  border: '1px solid rgb(153, 153, 153)',
-                  borderRadius: '7px',
-                  color: 'rgb(51, 51, 51)',
-                  padding: '0.5%'
-                }}
-              >
-                <span
-                  className='fa fa-search'
-                  style={{ color: 'rgba(0, 0, 0, 0.54)', fontSize: '0.9em' }}
-                ></span>
-                <input
-                  type='text'
-                  className='search-input'
-                  maxLength='30'
-                  minLength='2'
-                  placeholder='Search'
+              <div className='filter-container'>
+                <span className='p-border'>
+                  <span className='fa fa-search'></span>
+                  <input
+                    type='text'
+                    className='search-input'
+                    maxLength='30'
+                    minLength='2'
+                    placeholder='Search'
+                    onChange={hangleSearch}
+                  />
+                </span>
+                <FormControlLabel
+                  className='mui-switch'
+                  control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
+                  label=''
+                  onChange={handleChange}
                 />
-              </span>
-
-              <FormControlLabel
-                className='mui-switch'
-                control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
-                label=''
-              />
+                <Select handleFilter={handleFilter} />
+              </div>
             </div>
+            <header className='card-bar-body' />
+            {isTable ? <Table allUsers={currentUsers} /> : <Card allUsers={currentUsers} />}
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 
