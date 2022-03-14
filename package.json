@@ -12,7 +12,7 @@
     "@nejcm/react-skeleton-emotion": "^3.0.6",
     "@reduxjs/toolkit": "^1.7.2",
     "@testing-library/jest-dom": "^5.16.1",
-    "@testing-library/react": "^12.1.2",
+    "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "babel-jest": "^27.5.1",
     "enzyme": "^3.11.0",

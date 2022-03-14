@@ -2,7 +2,9 @@ import { shallow } from 'enzyme'
 
 import Input from 'components/input'
 
-const valudInputComponent = <Input item='email' formik={{ errors: [], values: [] }} />
+const valudInputComponent = (
+  <Input item='email' formik={{ errors: [], values: [], handleChange: () => {} }} />
+)
 
 describe('Input', () => {
   test('render', () => {

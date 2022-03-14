@@ -9,6 +9,7 @@ Array [
       autoComplete="email"
       className="input-field undefined"
       name="email"
+      onChange={[Function]}
       placeholder="email"
       type="email"
     />
