@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`loader should render loader 1`] = `
+Array [
+  <div
+    className="backdrop"
+  >
+    <div
+      className="loading-spinner-wrapper"
+    >
+      <div
+        className="loading-spinner"
+      >
+        <div />
+      </div>
+    </div>
+  </div>,
+]
+`;
