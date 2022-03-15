@@ -1,8 +1,8 @@
-const validate = require('../utils/userValidate')
+import { validateLogin } from 'utils/userValidate'
 
 test('Return {} when email and password are valid', () => {
   expect(
-    validate.validateLogin({
+    validateLogin({
       email: 'za@gmail.com',
       password: '123723j2h'
     })
@@ -11,7 +11,7 @@ test('Return {} when email and password are valid', () => {
 
 test('Return { email: "Required", password: "Required" } when email and password are empty', () => {
   expect(
-    validate.validateLogin({
+    validateLogin({
       email: '',
       password: ''
     })
@@ -20,7 +20,7 @@ test('Return { email: "Required", password: "Required" } when email and password
 
 test('Return { email: "Invalid email address"} when email format is not correct', () => {
   expect(
-    validate.validateLogin({
+    validateLogin({
       email: 'zagmail.com',
       password: '123723j2h'
     })
@@ -29,7 +29,7 @@ test('Return { email: "Invalid email address"} when email format is not correct'
 
 test('Return { password: "Must be 5 characters or more"} when the length of password is less then 5', () => {
   expect(
-    validate.validateLogin({
+    validateLogin({
       email: 'za@gmail.com',
       password: '1234'
     })
