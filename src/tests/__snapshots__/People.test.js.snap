@@ -1,0 +1,398 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`People should render people container 1`] = `
+Array [
+  <div
+    className="d-flex row justify-content-center align-align-items-center"
+    style={
+      Object {
+        "backgroundColor": "#fff",
+        "height": 70,
+        "width": "100%",
+      }
+    }
+  >
+    <div>
+      <button
+        className="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root  css-1e6y48t-MuiButtonBase-root-MuiButton-root"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        Open modal
+        <span
+          className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+  </div>,
+  <div
+    className="container-fluid people-container"
+  >
+    <div
+      className="people-wrapper"
+    >
+      <div
+        className="card-header "
+      >
+        <span
+          className="card-title"
+        >
+          People (
+          0
+          )
+        </span>
+      </div>
+      <div
+        className="card-root"
+      >
+        <div>
+          <div>
+            <div
+              className="card-scrollable"
+            />
+            <div
+              className="card-scroller"
+            >
+              <div
+                className="card-flexContainer"
+              >
+                <button
+                  className="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root user-btn css-1e6y48t-MuiButtonBase-root-MuiButton-root"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onContextMenu={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={0}
+                  type="button"
+                >
+                  All users
+                  <span
+                    className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+              <span
+                className="user-bottom"
+              />
+            </div>
+            <header
+              className="card-bar"
+            />
+          </div>
+          <div
+            className="filter-container"
+          >
+            <span
+              className="p-border"
+            >
+              <span
+                className="fa fa-search"
+              />
+              <input
+                className="search-input"
+                maxLength="30"
+                minLength="2"
+                onChange={[Function]}
+                placeholder="Search"
+                type="text"
+              />
+            </span>
+            <label
+              className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd mui-switch css-j204z7-MuiFormControlLabel-root"
+            >
+              <span
+                className="MuiSwitch-root MuiSwitch-sizeMedium css-7okvhr-MuiSwitch-root"
+              >
+                <span
+                  className="MuiSwitch-switchBase MuiSwitch-colorPrimary MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root Mui-checked css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase"
+                  onBlur={[Function]}
+                  onContextMenu={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={null}
+                >
+                  <input
+                    className="MuiSwitch-input PrivateSwitchBase-input css-1m9pwf3"
+                    defaultChecked={true}
+                    onChange={[Function]}
+                    type="checkbox"
+                  />
+                  <span
+                    className="MuiSwitch-thumb css-jsexje-MuiSwitch-thumb"
+                  />
+                  <span
+                    className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </span>
+                <span
+                  className="MuiSwitch-track css-1yjjitx-MuiSwitch-track"
+                />
+              </span>
+              <span
+                className="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+              >
+                
+              </span>
+            </label>
+            <div
+              style={
+                Object {
+                  "width": "40rem",
+                }
+              }
+            >
+              <div
+                className=" css-b62m3t-container"
+                onKeyDown={[Function]}
+              >
+                <span
+                  className="css-1f43avz-a11yText-A11yText"
+                  id="react-select-2-live-region"
+                />
+                <span
+                  aria-atomic="false"
+                  aria-live="polite"
+                  aria-relevant="additions text"
+                  className="css-1f43avz-a11yText-A11yText"
+                />
+                <div
+                  className=" css-1s2u09g-control"
+                  onMouseDown={[Function]}
+                  onTouchEnd={[Function]}
+                >
+                  <div
+                    className=" css-319lph-ValueContainer"
+                    style={
+                      Object {
+                        "display": "grid",
+                      }
+                    }
+                  >
+                    <div
+                      className=" css-14el2xx-placeholder"
+                      id="react-select-2-placeholder"
+                    >
+                      Filter
+                    </div>
+                    <div
+                      className=" css-6j8wv5-Input"
+                      data-value=""
+                    >
+                      <input
+                        aria-autocomplete="list"
+                        aria-controls="react-select-2-listbox"
+                        aria-describedby="react-select-2-placeholder"
+                        aria-expanded={false}
+                        aria-haspopup={true}
+                        aria-owns="react-select-2-listbox"
+                        autoCapitalize="none"
+                        autoComplete="off"
+                        autoCorrect="off"
+                        className=""
+                        disabled={false}
+                        id="react-select-2-input"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        role="combobox"
+                        spellCheck="false"
+                        style={
+                          Object {
+                            "background": 0,
+                            "border": 0,
+                            "color": "inherit",
+                            "font": "inherit",
+                            "gridArea": "1 / 2",
+                            "label": "input",
+                            "margin": 0,
+                            "minWidth": "2px",
+                            "opacity": 1,
+                            "outline": 0,
+                            "padding": 0,
+                            "width": "100%",
+                          }
+                        }
+                        tabIndex={0}
+                        type="text"
+                        value=""
+                      />
+                    </div>
+                  </div>
+                  <div
+                    className=" css-1hb7zxy-IndicatorsContainer"
+                  >
+                    <span
+                      className=" css-1okebmr-indicatorSeparator"
+                    />
+                    <div
+                      aria-hidden="true"
+                      className=" css-tlfecz-indicatorContainer"
+                      onMouseDown={[Function]}
+                      onTouchEnd={[Function]}
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="css-tj5bde-Svg"
+                        focusable="false"
+                        height={20}
+                        viewBox="0 0 20 20"
+                        width={20}
+                      >
+                        <path
+                          d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <header
+          className="card-bar-body"
+        />
+        <div
+          className="skeleton  s-active css-1m4nq50"
+        >
+          <div
+            className="skeleton  s-active css-1m4nq50"
+          >
+            <table
+              className="s-table  css-1uj1r5t"
+            >
+              <thead>
+                <tr>
+                  <th
+                    align="left"
+                  >
+                    <u />
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <span
+                      className="s-rect s-loader s-cell css-0"
+                      style={
+                        Object {
+                          "height": undefined,
+                          "maxHeight": undefined,
+                          "maxWidth": undefined,
+                          "minHeight": undefined,
+                          "minWidth": undefined,
+                          "width": "100%",
+                        }
+                      }
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span
+                      className="s-rect s-loader s-cell css-0"
+                      style={
+                        Object {
+                          "height": undefined,
+                          "maxHeight": undefined,
+                          "maxWidth": undefined,
+                          "minHeight": undefined,
+                          "minWidth": undefined,
+                          "width": "100%",
+                        }
+                      }
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span
+                      className="s-rect s-loader s-cell css-0"
+                      style={
+                        Object {
+                          "height": undefined,
+                          "maxHeight": undefined,
+                          "maxWidth": undefined,
+                          "minHeight": undefined,
+                          "minWidth": undefined,
+                          "width": "100%",
+                        }
+                      }
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span
+                      className="s-rect s-loader s-cell css-0"
+                      style={
+                        Object {
+                          "height": undefined,
+                          "maxHeight": undefined,
+                          "maxWidth": undefined,
+                          "minHeight": undefined,
+                          "minWidth": undefined,
+                          "width": "100%",
+                        }
+                      }
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span
+                      className="s-rect s-loader s-cell css-0"
+                      style={
+                        Object {
+                          "height": undefined,
+                          "maxHeight": undefined,
+                          "maxWidth": undefined,
+                          "minHeight": undefined,
+                          "minWidth": undefined,
+                          "width": "100%",
+                        }
+                      }
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;

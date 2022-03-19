@@ -1,5 +1,4 @@
-import { shallow } from 'enzyme'
-
+import { shallow, render } from 'enzyme'
 import Input from 'components/input'
 
 const valudInputComponent = (
@@ -7,7 +6,13 @@ const valudInputComponent = (
 )
 
 describe('Input', () => {
-  test('render', () => {
+  test('should be an input element', () => {
+    const wrapper = shallow(valudInputComponent)
+    const inputType = wrapper.find('input')
+    expect(inputType.exists()).toBe(true)
+  })
+
+  test('should render', () => {
     expect(shallow(valudInputComponent).exists()).toBe(true)
   })
 

@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import AppBar from 'components/appbar'
+import AppBar from 'components/sample/AppBar'
 import { ADD_ALL_USERS, REMOVE_ALL_USER } from 'store/allUsers'
 import Card from 'components/card'
 import { getUsers } from 'services/userServices'

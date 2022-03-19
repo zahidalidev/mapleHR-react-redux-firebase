@@ -4,7 +4,7 @@ import { USER_LOGIN } from 'store/user'
 import { useNavigate } from 'react-router-dom'
 
 import { login } from 'services/userServices'
-import { loginValidate as validateLogin } from 'utils/userValidate'
+import { validateLogin } from 'utils/userValidate'
 import AuthForm from 'components/authform'
 import Loader from 'components/loader'
 
