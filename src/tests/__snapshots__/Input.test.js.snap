@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input should render input component 1`] = `
+Array [
+  <div
+    className="input-wrapper"
+  >
+    <input
+      autoComplete="email"
+      className="input-field undefined"
+      name="email"
+      onChange={[Function]}
+      placeholder="email"
+      type="email"
+    />
+  </div>,
+]
+`;

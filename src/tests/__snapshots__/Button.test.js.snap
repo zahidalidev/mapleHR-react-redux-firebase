@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button should render button 1`] = `
+Array [
+  <div
+    className="sign-in-form-button"
+  >
+    <ForwardRef(Button)
+      className="landing-page-button"
+      data-flag="Login"
+      style={
+        Object {
+          "backgroundColor": "#00b8b0",
+        }
+      }
+      type="submit"
+      variant="contained"
+    >
+      Login
+    </ForwardRef(Button)>
+  </div>,
+]
+`;
